@@ -55,3 +55,6 @@ This project conforms to both the Naming and the layout conventions for `Java` p
 13 directories, 10 files
 ```
 You will notice that the project is named `farm-dashboard`, but the package is referred to in the `Java` files as `farm.dashboard`. This is `Java's` naming convention. You will need to have `package farm.dashboard;` as the very first line of every `java` file in your program.
+
+## Additional Resources:
+[This article](https://thecodinginterface.com/blog/javafx-with-gradle-and-eclipse-java-components/) is a pretty good intro to coding with `JavaFX`. His project layout is almost identical to ours because he is using `Gradle` as his build tool. This could be really helpful.
