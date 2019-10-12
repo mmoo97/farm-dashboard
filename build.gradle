@@ -35,7 +35,7 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'farm.dashboard.HelloWorld'
+mainClassName = 'farm.dashboard.DashboardApp'
 
 application {
     // Define the main class for the application
