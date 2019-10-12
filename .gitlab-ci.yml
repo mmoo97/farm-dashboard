@@ -30,6 +30,8 @@ test:
   stage: test
   script:
     - ./gradlew check
+  only:
+  - merge_requests
 
 after_script:
   - echo "End CI"
