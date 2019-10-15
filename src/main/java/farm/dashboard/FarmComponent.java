@@ -2,7 +2,7 @@ package farm.dashboard;
 
 public abstract class FarmComponent {
     public String name;
-    public float price;
+    public double price;
     public int location_x;
     public int location_y;
     public int length;
@@ -20,7 +20,7 @@ public abstract class FarmComponent {
         this.name = name;
     }
 
-    public void setPrice(int price){
+    public void setPrice(double price){
         this.price = price;
     }
 
@@ -32,7 +32,7 @@ public abstract class FarmComponent {
         this.location_y = y;
     }
 
-    public void setLenth(int length){
+    public void setLength(int length){
         this.length = length;
     }
 
@@ -46,13 +46,13 @@ public abstract class FarmComponent {
 
     public String getName(){return name;}
 
-    public float getPrice(){return price;}
+    public double getPrice(){return price;}
 
     public int getLocationX(){return location_x;}
 
     public int getLocationY(){return location_y;}
 
-    public int getLenth(){return length;}
+    public int getLength(){return length;}
 
     public int getWidth(){return width;}
 
