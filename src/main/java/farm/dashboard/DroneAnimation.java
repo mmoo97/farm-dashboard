@@ -14,7 +14,7 @@ public class DroneAnimation extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MainLayout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("farm.dashboard/MainLayout.fxml"));
 
         Scene scene = new Scene(root, 1200, 800);
 
@@ -22,6 +22,5 @@ public class DroneAnimation extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 
 }
