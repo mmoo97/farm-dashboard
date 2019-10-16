@@ -11,6 +11,7 @@ public class ItemContainer extends FarmComponent {
     }
 
     public boolean add(FarmComponent component){
+        component.setParent(this);
         return items.add(component);
     }
 

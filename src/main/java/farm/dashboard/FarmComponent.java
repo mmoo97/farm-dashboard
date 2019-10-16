@@ -1,6 +1,7 @@
 package farm.dashboard;
 
 public abstract class FarmComponent {
+    FarmComponent parent;
     public String name;
     public double price;
     public int location_x;
@@ -9,11 +10,21 @@ public abstract class FarmComponent {
     public int width;
     public int height;
 
-    public abstract void delete();
+    public void delete(){
+        parent.remove(this);
+    };
+
+    public boolean remove(FarmComponent component){
+        return true;
+    }
 
     public void setPosition(int x, int y){
         setLocationX(x);
         setLocationY(y);
+    }
+
+    public void setParent(FarmComponent parent){
+        this.parent = parent;
     }
 
     public void setName(String name){
@@ -44,6 +55,7 @@ public abstract class FarmComponent {
         this.height = height;
     }
 
+    public FarmComponent getParent(){return parent;}
     public String getName(){return name;}
 
     public double getPrice(){return price;}
