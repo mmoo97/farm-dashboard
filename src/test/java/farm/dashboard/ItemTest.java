@@ -31,29 +31,29 @@ public class ItemTest {
 
     @Test
     public void testSetLocationX(){
-        assertEquals(item.getLocationX(), 0);
+        assertEquals(item.getLocationX(), 0, 0.001);
         item.setLocationX(3);
         assertNotNull("Item X location was not set", item.getLocationX());
-        assertEquals(item.getLocationX(), 3);
+        assertEquals(item.getLocationX(), 3, 0.001);
     }
 
     @Test
     public void testSetLocationY(){
-        assertEquals(item.getLocationY(), 0);
+        assertEquals(item.getLocationY(), 0, 0.001);
         item.setLocationY(6);
         assertNotNull("Item Y location was not set", item.getLocationY());
-        assertEquals(item.getLocationY(), 6);
+        assertEquals(item.getLocationY(), 6, 0.001);
     }
 
     @Test
     public void testSetPosition(){
-        int originalX = item.getLocationX();
-        int originalY = item.getLocationY();
+        double originalX = item.getLocationX();
+        double originalY = item.getLocationY();
         item.setPosition(8, 10);
         assertNotEquals(originalX, item.getLocationX());
         assertNotEquals(originalY, item.getLocationY());
-        assertEquals(item.getLocationX(), 8);
-        assertEquals(item.getLocationY(), 10);
+        assertEquals(item.getLocationX(), 8, 0.001);
+        assertEquals(item.getLocationY(), 10, 0.001);
     }
 
     @Test
