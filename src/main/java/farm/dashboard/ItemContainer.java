@@ -10,6 +10,16 @@ public class ItemContainer extends FarmComponent {
     public ItemContainer(){
     }
 
+    public ItemContainer(String name, double price, double x, double y, int length, int width, int height){
+        this.name = name;
+        this.price = price;
+        this.location_x = x;
+        this.location_y = y;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+
     public boolean add(FarmComponent component){
         component.setParent(this);
         return items.add(component);
@@ -27,5 +37,10 @@ public class ItemContainer extends FarmComponent {
         // Probably just zero out all the values and wait for garbage collection
         return;
     }
+
+    public ArrayList<FarmComponent> getChildren(){
+        return items;
+    }
+
 
 }

@@ -31,29 +31,29 @@ public class ItemContainerTest {
 
     @Test
     public void testSetLocationX(){
-        assertEquals(itemContainer.getLocationX(), 0);
+        assertEquals(itemContainer.getLocationX(), 0, 0.001);
         itemContainer.setLocationX(3);
         assertNotNull("ItemContainer X location was not set", itemContainer.getLocationX());
-        assertEquals(itemContainer.getLocationX(), 3);
+        assertEquals(itemContainer.getLocationX(), 3, 0.001);
     }
 
     @Test
     public void testSetLocationY(){
-        assertEquals(itemContainer.getLocationY(), 0);
+        assertEquals(itemContainer.getLocationY(), 0, 0.001);
         itemContainer.setLocationY(6);
         assertNotNull("ItemContainer Y location was not set", itemContainer.getLocationY());
-        assertEquals(itemContainer.getLocationY(), 6);
+        assertEquals(itemContainer.getLocationY(), 6, 0.001);
     }
 
     @Test
     public void testSetPosition(){
-        int originalX = itemContainer.getLocationX();
-        int originalY = itemContainer.getLocationY();
+        double originalX = itemContainer.getLocationX();
+        double originalY = itemContainer.getLocationY();
         itemContainer.setPosition(8, 10);
         assertNotEquals(originalX, itemContainer.getLocationX());
         assertNotEquals(originalY, itemContainer.getLocationY());
-        assertEquals(itemContainer.getLocationX(), 8);
-        assertEquals(itemContainer.getLocationY(), 10);
+        assertEquals(itemContainer.getLocationX(), 8, 0.001);
+        assertEquals(itemContainer.getLocationY(), 10, 0.001);
     }
 
     @Test
