@@ -1,11 +1,13 @@
 package farm.dashboard;
 
+import java.util.ArrayList;
+
 public abstract class FarmComponent {
     FarmComponent parent;
     public String name;
     public double price;
-    public int location_x;
-    public int location_y;
+    public double location_x;
+    public double location_y;
     public int length;
     public int width;
     public int height;
@@ -56,13 +58,17 @@ public abstract class FarmComponent {
     }
 
     public FarmComponent getParent(){return parent;}
+
+    public ArrayList<FarmComponent> getChildren(){
+        return new ArrayList<FarmComponent>();
+    }
     public String getName(){return name;}
 
     public double getPrice(){return price;}
 
-    public int getLocationX(){return location_x;}
+    public double getLocationX(){return location_x;}
 
-    public int getLocationY(){return location_y;}
+    public double getLocationY(){return location_y;}
 
     public int getLength(){return length;}
 
