@@ -12,6 +12,10 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.MultipleSelectionModel;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 public class MainController{
     @FXML
@@ -25,6 +29,26 @@ public class MainController{
 
     @FXML
     private TreeView<FarmComponent> componentTree = new TreeView<FarmComponent>();
+
+    private ContextMenu menu = new ContextMenu();
+
+    @FXML
+    public void treeMouseHandler(MouseEvent event){
+        MouseButton button = event.getButton();
+        if(button==MouseButton.SECONDARY){
+            TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
+            if (selected!=null) {
+                openContextMenu(selected, event.getScreenX(), event.getScreenY());
+            }
+        }else{
+            menu.hide();
+        }
+    }
+
+    private void openContextMenu(TreeItem<FarmComponent> item, double x, double y) {
+        menu = item.getValue().getContextMenu();
+        menu.show(componentTree, x, y);
+    }
 
     @FXML
     public void drawTree(ActionEvent event){
@@ -43,12 +67,35 @@ public class MainController{
     }
 
     @FXML
+    public void addItem(){
+        TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
+        Item a = new Item("Added Item", 3.00, 100, 400, 30, 50, 20);
+        if(selected!=null){
+            ItemContainer item = (ItemContainer)(selected.getValue());
+            item.add(a);
+        } else {
+            rootContainer.add(a);
+        }
+    }
+
+    @FXML
+    public void addItemContainer(){
+        TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
+        ItemContainer a = new ItemContainer("Added Item", 3.00, 100, 400, 30, 50, 20);
+        if(selected!=null){
+            ItemContainer item = (ItemContainer)(selected.getValue());
+            item.add(a);
+        } else {
+            rootContainer.add(a);
+        }
+    }
+
+    @FXML
     public void drawFarm(ActionEvent event){
-        ItemContainer temp = new ItemContainer("test", 2.00, 100, 500, 50, 70, 30);
-        temp.add(new Item("test2", 3.00, 100, 400, 30, 50, 20));
-        rootContainer.add(temp);
+        drawingItems.getChildren().clear();
         drawComponents(rootContainer);
     }
+
 
     private void drawComponents(FarmComponent component){
         drawComponent(component);
