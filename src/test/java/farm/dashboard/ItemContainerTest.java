@@ -80,4 +80,14 @@ public class ItemContainerTest {
         assertEquals(itemContainer.getHeight(), 18);
     }
 
+    @Test
+    public void testRemove(){
+        ItemContainer temp = new ItemContainer();
+        temp.setName("ree");
+        itemContainer.add(temp);
+        assertNotEquals(itemContainer.getChildren().size(), 0);
+        assertNotNull("Did not remove the item", itemContainer.remove(temp));
+        assertEquals(itemContainer.getChildren().size(), 0);
+    }
+
 }
