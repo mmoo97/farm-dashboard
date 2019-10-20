@@ -1,6 +1,7 @@
 package farm.dashboard;
 
 import java.util.ArrayList;
+import javafx.scene.control.ContextMenu;
 
 public abstract class FarmComponent {
     FarmComponent parent;
@@ -11,9 +12,11 @@ public abstract class FarmComponent {
     public int length;
     public int width;
     public int height;
+    protected ContextMenu contextMenu;
 
     public void delete(){
-        parent.remove(this);
+        // parent.remove(this);
+        throw new UnsupportedOperationException("Cannot delete from within an item");
     };
 
     public boolean remove(FarmComponent component){
@@ -37,11 +40,11 @@ public abstract class FarmComponent {
         this.price = price;
     }
 
-    public void setLocationX(int x){
+    public void setLocationX(double x){
         this.location_x = x;
     }
 
-    public void setLocationY(int y){
+    public void setLocationY(double y){
         this.location_y = y;
     }
 
@@ -76,8 +79,28 @@ public abstract class FarmComponent {
 
     public int getHeight(){return height;}
 
+    public ContextMenu getContextMenu(){
+        return contextMenu;
+    }
+
     @Override
     public String toString() {
         return this.name;
-}
+    }
+
+    /*
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null || obj.getClass()!= this.getClass()){
+            return false;
+        }
+
+        FarmComponent c = (FarmComponent) obj;
+        if (name.equals(c.name)){
+            return true;
+        }
+        return false;
+    }
+    */
+
 }
