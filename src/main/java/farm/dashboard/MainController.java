@@ -10,6 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
 public class MainController{
     @FXML
@@ -20,6 +22,25 @@ public class MainController{
 
     @FXML
     private ItemContainer rootContainer = new ItemContainer();
+
+    @FXML
+    private TreeView<FarmComponent> componentTree = new TreeView<FarmComponent>();
+
+    @FXML
+    public void drawTree(ActionEvent event){
+        TreeItem<FarmComponent> rootItem = buildComponentTree(rootContainer);
+        componentTree.setRoot(rootItem);
+        componentTree.setShowRoot(false);
+    }
+
+    private TreeItem<FarmComponent> buildComponentTree(FarmComponent component){
+        TreeItem<FarmComponent> root = new TreeItem<FarmComponent>(component);
+        ArrayList<FarmComponent> children = component.getChildren();
+        for(int i = 0; i<children.size(); i++){
+            root.getChildren().add(buildComponentTree(children.get(i)));
+        }
+        return root;
+    }
 
     @FXML
     public void drawFarm(ActionEvent event){
