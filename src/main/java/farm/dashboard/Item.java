@@ -13,6 +13,7 @@ public class Item extends FarmComponent {
         this.length = length;
         this.width = width;
         this.height = height;
+        this.contextMenu = new ComponentContextMenu(this);
     }
 
     public void delete(){
