@@ -104,7 +104,7 @@ public class MainController{
         ItemContainer a;
         //Todo: Potentially add methods for prompt later
         new PropertiesPrompt(a = new ItemContainer("", 0.00, 0.00, 0.00, 0, 0, 0),
-                "New Item Container", "Edit Container Properties");
+                "Add Item Container", "Edit Container Properties");
 
         if(selected!=null){
             ItemContainer item = (ItemContainer)(selected.getValue());

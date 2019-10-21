@@ -35,7 +35,7 @@ public class PropertiesPrompt extends TextInputDialog {
         gridPane.add(name, 1, 0);
         gridPane.add(new Label("Name: "), 0, 0);
         gridPane.add(price, 1, 1);
-        gridPane.add(new Label("Price(USD): "), 0, 1);
+        gridPane.add(new Label("Price ($): "), 0, 1);
         gridPane.add(x, 1, 2);
         gridPane.add(new Label("X: "), 0, 2);
         gridPane.add(y, 1, 3);
