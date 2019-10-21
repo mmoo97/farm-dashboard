@@ -101,7 +101,11 @@ public class MainController{
     @FXML
     public void addItemContainer(){
         TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
-        ItemContainer a = new ItemContainer("Added Item", 3.00, 100, 400, 130, 150, 120);
+        ItemContainer a;
+        //Todo: Potentially add methods for prompt later
+        new PropertiesPrompt(a = new ItemContainer("", 0.00, 0.00, 0.00, 0, 0, 0),
+                "Add Item Container", "Edit Container Properties");
+
         if(selected!=null){
             ItemContainer item = (ItemContainer)(selected.getValue());
             item.add(a);
