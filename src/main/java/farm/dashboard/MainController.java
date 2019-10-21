@@ -65,6 +65,9 @@ public class MainController{
         for(int i = 0; i<children.size(); i++){
             root.getChildren().add(buildComponentTree(children.get(i)));
         }
+        if(!root.isLeaf()){
+            root.setExpanded(true);
+        }
         return root;
     }
 
