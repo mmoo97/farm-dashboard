@@ -2,6 +2,7 @@ package farm.dashboard;
 
 import java.lang.Math;
 import java.util.ArrayList;
+import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,6 +17,8 @@ import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MainController{
     @FXML
@@ -25,7 +28,7 @@ public class MainController{
     private AnchorPane drawingItems;
 
     @FXML
-    private ItemContainer rootContainer = new ItemContainer("", 0, 0, 0, 0, 0, 0);
+    private ItemContainer rootContainer = new ItemContainer("", 0, 0, 0, 0, 0, 0, "");
 
     @FXML
     private TreeView<FarmComponent> componentTree = new TreeView<FarmComponent>();
@@ -86,7 +89,7 @@ public class MainController{
     @FXML
     public void addItem(){
         TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
-        Item a = new Item("Added Item", 3.00, 100, 400, 30, 50, 20);
+        Item a = new Item("Added Item", 3.00, 100, 400, 30, 50, 20, "drone.png");
         if(selected!=null){
             ItemContainer item = (ItemContainer)(selected.getValue());
             item.add(a);
@@ -98,7 +101,7 @@ public class MainController{
     @FXML
     public void addItemContainer(){
         TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
-        ItemContainer a = new ItemContainer("Added Item", 3.00, 100, 400, 30, 50, 20);
+        ItemContainer a = new ItemContainer("Added Item", 3.00, 100, 400, 130, 150, 120);
         if(selected!=null){
             ItemContainer item = (ItemContainer)(selected.getValue());
             item.add(a);
@@ -123,21 +126,29 @@ public class MainController{
 
     private void drawComponent(FarmComponent component){
         Text text = new Text(component.getName());
-        Rectangle vComponent = new Rectangle(); // Visual Component
-        vComponent.setWidth(component.getWidth());
-        vComponent.setHeight(component.getHeight());
+
+        String imageName = component.getImageName()!=null ? component.getImageName() : "placeholder.png";
+        ImageView vComponent = new ImageView(new Image(getImageURIPath(imageName)));
+
+        vComponent.setFitWidth(component.getWidth());
+        vComponent.setFitHeight(component.getHeight());
         vComponent.setX(component.getLocationX());
         vComponent.setY(component.getLocationY());
-        vComponent.setFill(Color.color(Math.random(), Math.random(), Math.random()));
 
         StackPane stack = new StackPane();
+        stack.setAlignment(Pos.BOTTOM_CENTER);
         stack.getChildren().addAll(vComponent, text);
 
         drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
         drawingItems.setBottomAnchor(stack, component.getLocationY());
-        drawingItems.setRightAnchor(stack, component.getLocationX());
-        drawingItems.setLeftAnchor(stack, 600 - component.getLocationX());
+        drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
+        drawingItems.setLeftAnchor(stack, component.getLocationX());
         drawingItems.getChildren().add(stack);
     }
+
+    private String getImageURIPath(String imageName){
+        return "file:src/main/resources/farm.dashboard/" + imageName;
+    }
+
 }
 
