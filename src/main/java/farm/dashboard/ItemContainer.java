@@ -42,6 +42,10 @@ public class ItemContainer extends FarmComponent {
         this.contextMenu.getItems().addAll(item6, item7);
 
     }
+    public ItemContainer(String name, double price, double x, double y, int length, int width, int height, String imageName){
+        this(name, price, x, y, length, width, height);
+        this.imageName = imageName;
+    }
 
     public boolean add(FarmComponent component){
         component.setParent(this);

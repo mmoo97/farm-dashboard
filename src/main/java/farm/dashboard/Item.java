@@ -16,6 +16,11 @@ public class Item extends FarmComponent {
         this.contextMenu = new ComponentContextMenu(this);
     }
 
+    public Item(String name, double price, double x, double y, int length, int width, int height, String imageName){
+        this(name, price, x, y, length, width, height);
+        this.imageName = imageName;
+    }
+
     public void delete(){
         // Probably just zero out all the values and wait for garbage collection
         return;
