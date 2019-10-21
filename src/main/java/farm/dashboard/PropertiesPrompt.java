@@ -24,13 +24,13 @@ public class PropertiesPrompt extends TextInputDialog {
 
         GridPane gridPane = new GridPane();
 
-        TextField name = new TextField();
-        TextField price = new TextField();
-        TextField x = new TextField();
-        TextField y = new TextField();
-        TextField length = new TextField();
-        TextField width = new TextField();
-        TextField height = new TextField();
+        TextField name = new TextField(component.getName());
+        TextField price = new TextField(String.valueOf(component.getPrice()));
+        TextField x = new TextField(String.valueOf(component.getLocationX()));
+        TextField y = new TextField(String.valueOf(component.getLocationY()));
+        TextField length = new TextField(String.valueOf(component.getLength()));
+        TextField width = new TextField(String.valueOf(component.getWidth()));
+        TextField height = new TextField(String.valueOf(component.getHeight()));
 
         gridPane.add(name, 1, 0);
         gridPane.add(new Label("Name: "), 0, 0);
