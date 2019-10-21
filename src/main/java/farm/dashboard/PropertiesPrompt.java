@@ -64,7 +64,7 @@ public class PropertiesPrompt extends TextInputDialog {
                 properties.add(width.getText());
                 properties.add(height.getText());
 
-                //Todo: Error handeling for values
+                //Todo: Error handling for values
 
                 return properties;
             }
