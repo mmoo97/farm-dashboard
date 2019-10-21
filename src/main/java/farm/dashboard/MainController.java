@@ -53,7 +53,19 @@ public class MainController{
     }
 
     @FXML
+    public void refreshComponents(ActionEvent event){
+        drawTree();
+        drawFarm();
+    }
+
+    @FXML
     public void drawTree(ActionEvent event){
+        TreeItem<FarmComponent> rootItem = buildComponentTree(rootContainer);
+        componentTree.setRoot(rootItem);
+        componentTree.setShowRoot(false);
+    }
+
+    public void drawTree(){
         TreeItem<FarmComponent> rootItem = buildComponentTree(rootContainer);
         componentTree.setRoot(rootItem);
         componentTree.setShowRoot(false);
@@ -95,8 +107,7 @@ public class MainController{
         }
     }
 
-    @FXML
-    public void drawFarm(ActionEvent event){
+    public void drawFarm(){
         drawingItems.getChildren().clear();
         drawComponents(rootContainer);
     }

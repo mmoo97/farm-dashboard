@@ -55,17 +55,13 @@
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="paintFarm" mnemonicParsing="false" onAction="#drawFarm" text="Draw Farm" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                          <Button fx:id="paintFarm" mnemonicParsing="false" onAction="#refreshComponents" text="Refresh UI" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
                                        </children>
                                     </GridPane>
-                                    <Button mnemonicParsing="false" onAction="#drawTree" text="DrawTree" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor></Button>
                                     <Button mnemonicParsing="false" onAction="#addItem" text="Add Item" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
