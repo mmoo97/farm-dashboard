@@ -11,6 +11,7 @@ import javafx.scene.control.TextInputDialog;
 public class ComponentContextMenu extends ContextMenu {
     FarmComponent component;
 
+
     public ComponentContextMenu(FarmComponent c){
         super();
         this.component = c;
@@ -118,7 +119,6 @@ public class ComponentContextMenu extends ContextMenu {
                 }
             }
         });
-
         this.getItems().addAll(item1, item2, item3, item4, item5);
 
     }
