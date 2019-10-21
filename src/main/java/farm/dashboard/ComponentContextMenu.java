@@ -52,7 +52,7 @@ public class ComponentContextMenu extends ContextMenu {
                 result = dialog.showAndWait();
 
                 result.ifPresent(Y -> {
-                    component.setLocationY(Double.parseDouble(Y));
+                    component.setLocationY(Double.valueOf(Y));
                 });
             }
         });
