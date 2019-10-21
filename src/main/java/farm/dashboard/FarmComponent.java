@@ -12,6 +12,7 @@ public abstract class FarmComponent {
     public int length;
     public int width;
     public int height;
+    protected String imageName;
     protected ContextMenu contextMenu;
 
     public void delete(){
@@ -78,6 +79,8 @@ public abstract class FarmComponent {
     public int getWidth(){return width;}
 
     public int getHeight(){return height;}
+
+    public String getImageName(){return imageName;}
 
     public ContextMenu getContextMenu(){
         return contextMenu;
