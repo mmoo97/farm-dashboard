@@ -1,25 +1,27 @@
 package farm.dashboard;
 
-public class Singleton {
-    private static Singleton instance;
+public class AppLauncher {
+    private static AppLauncher instance;
 
-    Singleton(){
+    AppLauncher(){
 
     }
 
-    public static Singleton getInstance(){
+    public static AppLauncher getInstance(){
         if(instance==null){
-            instance = new Singleton();
+            instance = new AppLauncher();
         }
         return instance;
     }
 
     public static void main(String[] args) {
-        Singleton runApp = new Singleton();
+        AppLauncher runApp = new AppLauncher();
 
-        if(runApp.getInstance() == null) {
+        if(runApp.getInstance() != null) {
             DroneAnimation.main(args);
         }
+        else
+            System.out.println("already have an instance running");
     }
 }
 
