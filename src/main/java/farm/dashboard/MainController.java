@@ -25,7 +25,7 @@ public class MainController{
     private AnchorPane drawingItems;
 
     @FXML
-    private ItemContainer rootContainer = new ItemContainer();
+    private ItemContainer rootContainer = new ItemContainer("", 0, 0, 0, 0, 0, 0);
 
     @FXML
     private TreeView<FarmComponent> componentTree = new TreeView<FarmComponent>();
@@ -39,6 +39,8 @@ public class MainController{
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
             if (selected!=null) {
                 openContextMenu(selected, event.getScreenX(), event.getScreenY());
+            } else {
+                openContextMenu(componentTree.getRoot(), event.getScreenX(), event.getScreenY());
             }
         }else{
             menu.hide();

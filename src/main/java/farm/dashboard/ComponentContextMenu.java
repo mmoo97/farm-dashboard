@@ -111,8 +111,11 @@ public class ComponentContextMenu extends ContextMenu {
         MenuItem item5 = new MenuItem("Delete");
         item5.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                ItemContainer c = (ItemContainer)(component.getParent());
-                c.remove(component);
+                FarmComponent parent = component.getParent();
+                if (parent!=null){
+                    ItemContainer c = (ItemContainer)parent;
+                    c.remove(component);
+                }
             }
         });
 
