@@ -29,7 +29,7 @@
                             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="200.0">
                                  <children>
                                     <Group layoutX="125.0" layoutY="147.0" />
-                                    <TreeView fx:id="componentTree" layoutX="60.0" layoutY="100.0" onMouseReleased="#treeMouseHandler" prefHeight="200.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TreeView fx:id="componentTree" layoutX="60.0" layoutY="100.0" onMouseEntered="#refreshComponents" onMouseExited="#refreshComponents" onMousePressed="#treeMouseHandler" prefHeight="200.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>

@@ -56,7 +56,7 @@ public class MainController{
     }
 
     @FXML
-    public void refreshComponents(ActionEvent event){
+    public void refreshComponents(){
         drawTree();
         drawFarm();
     }
@@ -91,7 +91,7 @@ public class MainController{
         TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
         Item a;
         new PropertiesPrompt(a = new Item("name", 0.00, 1, 1, 1, 1, 1),
-                "Add Item Container", "Edit Container Properties");
+                "Add Item", "Edit Item Properties");
 
         if(selected!=null){
             ItemContainer item = (ItemContainer)(selected.getValue());
@@ -99,6 +99,7 @@ public class MainController{
         } else {
             rootContainer.add(a);
         }
+        refreshComponents();
     }
 
     @FXML
@@ -115,6 +116,7 @@ public class MainController{
         } else {
             rootContainer.add(a);
         }
+        refreshComponents();
     }
 
     public void drawFarm(){
