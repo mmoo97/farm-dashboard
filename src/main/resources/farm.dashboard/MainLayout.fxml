@@ -3,6 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
@@ -26,10 +28,30 @@
                      <children>
                         <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="69.0" layoutY="94.0" prefHeight="331.0" prefWidth="409.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <content>
-                            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="200.0">
+                            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="391.0">
                                  <children>
                                     <Group layoutX="125.0" layoutY="147.0" />
-                                    <TreeView fx:id="componentTree" layoutX="60.0" layoutY="100.0" onMouseReleased="#treeMouseHandler" prefHeight="200.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TreeView fx:id="componentTree" layoutX="60.0" layoutY="100.0" onMouseReleased="#treeMouseHandler" prefHeight="400.0" prefWidth="391.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <MenuButton fx:id="contCommands" layoutX="14.0" layoutY="158.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="201.0" text="Item Container Commands">
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" text="Rename" />
+                                        <MenuItem mnemonicParsing="false" text="Change Location" />
+                                        <MenuItem mnemonicParsing="false" text="Change Price" />
+                                          <MenuItem mnemonicParsing="false" text="Change Dimensions" />
+                                          <MenuItem mnemonicParsing="false" text="Add Item" />
+                                          <MenuItem mnemonicParsing="false" text="Add Item-Container" />
+                                          <MenuItem mnemonicParsing="false" text="Delete" />
+                                      </items>
+                                    </MenuButton>
+                                    <MenuButton layoutX="241.0" layoutY="158.0" mnemonicParsing="false" text="Item Commands">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Rename" />
+                                        <MenuItem mnemonicParsing="false" text="Change Location" />
+                                          <MenuItem mnemonicParsing="false" text="Change Price" />
+                                          <MenuItem mnemonicParsing="false" text="Change Dimensions" />
+                                          <MenuItem mnemonicParsing="false" text="Delete" />
+                                      </items>
+                                    </MenuButton>
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
