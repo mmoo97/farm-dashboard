@@ -30,13 +30,19 @@ public class ItemContainer extends FarmComponent {
         MenuItem item6 = new MenuItem("Add Item");
         item6.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                add(new Item("", 0, 0, 0, 0, 0, 0));
+                Item temp;
+                new PropertiesPrompt(temp = new Item("name", 0.00, 1, 1, 1, 1, 1),
+                "Add Item Container", "Edit Container Properties");
+                add(temp);
             }
         });
         MenuItem item7 = new MenuItem("Add Item Container");
         item7.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                add(new ItemContainer("", 0, 0, 0, 0, 0, 0));
+                ItemContainer temp;
+                new PropertiesPrompt(temp = new ItemContainer("", 0.00, 1, 1, 1, 1, 1),
+                "Add Item Container", "Edit Container Properties");
+                add(temp);
             }
         });
         this.contextMenu.getItems().addAll(item6, item7);
