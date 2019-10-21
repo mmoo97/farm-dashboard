@@ -33,19 +33,19 @@ public class PropertiesPrompt extends TextInputDialog {
         TextField height = new TextField();
 
         gridPane.add(name, 1, 0);
-        gridPane.add(new Label("Name:"), 0, 0);
+        gridPane.add(new Label("Name: "), 0, 0);
         gridPane.add(price, 1, 1);
-        gridPane.add(new Label("Price:"), 0, 1);
+        gridPane.add(new Label("Price(USD): "), 0, 1);
         gridPane.add(x, 1, 2);
-        gridPane.add(new Label("X:"), 0, 2);
+        gridPane.add(new Label("X: "), 0, 2);
         gridPane.add(y, 1, 3);
-        gridPane.add(new Label("Y:"), 0, 3);
+        gridPane.add(new Label("Y: "), 0, 3);
         gridPane.add(length, 1, 4);
-        gridPane.add(new Label("Length:"), 0, 4);
+        gridPane.add(new Label("Length: "), 0, 4);
         gridPane.add(width, 1, 5);
-        gridPane.add(new Label("Width:"), 0, 5);
+        gridPane.add(new Label("Width: "), 0, 5);
         gridPane.add(height, 1, 6);
-        gridPane.add(new Label("Height:"), 0, 6);
+        gridPane.add(new Label("Height: "), 0, 6);
 
         dialog.getDialogPane().setContent(gridPane);
 
