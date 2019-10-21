@@ -89,7 +89,10 @@ public class MainController{
     @FXML
     public void addItem(){
         TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
-        Item a = new Item("Added Item", 3.00, 100, 400, 30, 50, 20, "drone.png");
+        Item a;
+        new PropertiesPrompt(a = new Item("name", 0.00, 1, 1, 1, 1, 1),
+                "Add Item Container", "Edit Container Properties");
+
         if(selected!=null){
             ItemContainer item = (ItemContainer)(selected.getValue());
             item.add(a);
@@ -103,7 +106,7 @@ public class MainController{
         TreeItem<FarmComponent> selected  = componentTree.getSelectionModel().getSelectedItem();
         ItemContainer a;
         //Todo: Potentially add methods for prompt later
-        new PropertiesPrompt(a = new ItemContainer("", 0.00, 0.00, 0.00, 0, 0, 0),
+        new PropertiesPrompt(a = new ItemContainer("name", 0.00, 1, 1, 1, 1, 1),
                 "Add Item Container", "Edit Container Properties");
 
         if(selected!=null){
