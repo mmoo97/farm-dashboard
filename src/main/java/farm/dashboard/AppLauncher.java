@@ -18,7 +18,7 @@ public class AppLauncher {
         AppLauncher runApp = new AppLauncher();
 
         if(runApp.getInstance() != null) {
-            DroneAnimation.main(args);
+            DashboardApp.main(args);
         }
         else
             System.out.println("already have an instance running");

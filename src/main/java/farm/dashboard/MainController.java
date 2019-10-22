@@ -22,6 +22,15 @@ import javafx.scene.image.ImageView;
 
 public class MainController{
     @FXML
+    private Button droneString;
+
+    @FXML
+    private Image droneImage = new Image("file:src/main/java/resources/farm.dashboard/drone.png");
+
+    @FXML
+    private ImageView imageView = new ImageView(droneImage);
+
+    @FXML
     private Button paintFarm;
 
     @FXML
@@ -153,11 +162,21 @@ public class MainController{
         drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
         drawingItems.setLeftAnchor(stack, component.getLocationX());
         drawingItems.getChildren().add(stack);
+
+
+
+
     }
 
     private String getImageURIPath(String imageName){
         return "file:src/main/resources/farm.dashboard/" + imageName;
     }
+    //alright so setX and Y will move the image respectfully
+    public void droneConvert(){
+        System.out.println("x prop " + imageView.xProperty() + "y prop " + imageView.yProperty());
+        imageView.setX(250.0); imageView.setY(300);
+    }
 
 }
+
 
