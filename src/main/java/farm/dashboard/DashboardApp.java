@@ -11,17 +11,28 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class DashboardApp extends Application {
+
+    private static Stage guiStage;
     public static void main(String[] args) {
         launch(args);
     }
+
+    public static Stage getStage() {
+        return guiStage;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("farm.dashboard/MainLayout.fxml"));
 
         Scene scene = new Scene(root, 1200, 800);
 
-        primaryStage.setTitle("Farm Dashboard");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        guiStage = primaryStage;
+
+        guiStage.setTitle("Farm Dashboard");
+        guiStage.setScene(scene);
+        guiStage.show();
+
+
     }
 }
