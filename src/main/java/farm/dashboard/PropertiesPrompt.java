@@ -14,6 +14,11 @@ public class PropertiesPrompt extends TextInputDialog {
         super();
         this.component = c;
 
+        //String type is for the menu checking type
+        //as of right now I am not sure why its here but i put it here
+        //If we are running it as a check then we just need to modify the menu section (down below) with ifs
+        String type = "cow";
+
         Dialog<ArrayList<String>> dialog = new Dialog<>();
         dialog.setTitle(title);
         dialog.setHeaderText(header);
@@ -46,6 +51,21 @@ public class PropertiesPrompt extends TextInputDialog {
         gridPane.add(new Label("Width: "), 0, 5);
         gridPane.add(height, 1, 6);
         gridPane.add(new Label("Height: "), 0, 6);
+
+        //guess ill add it here -CB
+        // not sure if it needs a menubar if so thats an easy add
+        // menu creation
+        Menu     menu  = new Menu("Type");
+        MenuItem item1 = new MenuItem("Cow");
+        MenuItem item2 = new MenuItem("Farm");
+        MenuItem item3 = new MenuItem("Fence");
+        MenuItem item4 = new MenuItem("whatever else");
+
+        //add it to the menuBar
+        menu.getItems().add(item1);
+        menu.getItems().add(item2);
+        menu.getItems().add(item3);
+        menu.getItems().add(item4);
 
         dialog.getDialogPane().setContent(gridPane);
 
