@@ -40,7 +40,7 @@ public class ItemContainer extends FarmComponent {
         item7.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 ItemContainer temp;
-                new PropertiesPrompt(temp = new ItemContainer("", 0.00, 1, 1, 1, 1, 1),
+                new PropertiesPrompt(temp = new ItemContainer("name", 0.00, 1, 1, 1, 1, 1),
                 "Add Item Container", "Edit Container Properties");
                 add(temp);
             }
