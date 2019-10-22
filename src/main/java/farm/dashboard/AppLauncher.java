@@ -2,8 +2,10 @@ package farm.dashboard;
 
 public class AppLauncher {
     private static AppLauncher instance;
+    static DashboardApp app;
 
     AppLauncher(){
+        this.app = new DashboardApp();
 
     }
 
@@ -18,7 +20,7 @@ public class AppLauncher {
         AppLauncher runApp = new AppLauncher();
 
         if(runApp.getInstance() != null) {
-            DashboardApp.main(args);
+            app.main(args);
         }
         else
             System.out.println("already have an instance running");
