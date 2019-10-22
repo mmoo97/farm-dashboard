@@ -14,10 +14,15 @@ We will only need to change the `Constants Class` to operate the drone.
 
 <https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf>
 
-**Step 3:** Retreive path from `Tello3ToJava.py` and enter as string variable `FILE_PATH_DEVELOPER` in `TelloJavaToPython.java`
+**Step 3:** Retreive path from `Tello3ToJava.py` and enter as string variable `FILE_PATH_DEVELOPER` in `TelloJavaToPython.java`.  Repeat this process for your Python installation location and enter this for the variable `PYTHON_PATH`.
 
 *Example:* 
 
 String FILE_PATH_DEVELOPER =“/Users/username/desktop/Tello3ToJava.py” 
+
+String PYTHON_PATH = "/usr/local/bin/python3"
+
+
+**Step 4:** Open `TelloJavaToPython.java` and run.  
 
 
