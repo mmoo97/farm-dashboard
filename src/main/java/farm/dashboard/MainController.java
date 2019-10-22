@@ -20,9 +20,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import static farm.dashboard.AppLauncher.app;
-import static farm.dashboard.AppLauncher.getInstance;
-
 public class MainController{
     @FXML
     private Button paintFarm;
@@ -147,8 +144,7 @@ public class MainController{
         vComponent.setX(component.getLocationX());
         vComponent.setY(component.getLocationY());
 
-        StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
-        //StackPane stack = new StackPane();
+        StackPane stack = new StackPane();
         stack.setAlignment(Pos.BOTTOM_CENTER);
         stack.getChildren().addAll(vComponent, text);
 
@@ -157,15 +153,6 @@ public class MainController{
         drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
         drawingItems.setLeftAnchor(stack, component.getLocationX());
         drawingItems.getChildren().add(stack);
-    }
-
-    private void animateItem(Item item, double x, double y){
-        double startX = item.location_x;
-        double startY = item.location_y;
-        double endX = x;
-        double endY = y;
-
-
     }
 
     private String getImageURIPath(String imageName){
