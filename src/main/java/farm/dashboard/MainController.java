@@ -58,10 +58,9 @@ public class MainController{
                 Text text2 = new Text();
                 text1.setText("Purchase Price: " + selected.getValue().getPrice());
                 text2.setText("Current Market Value: " + selected.getValue().getPrice());
-                text1.setX(40); text1.setY(500);
-                VBox thing2 = new VBox();
-                thing2.getChildren().add(text1);
-                thing.getChildren().add(thing2);
+
+                thing.getChildren().add(text1);
+                thing.getChildren().add(text2);
 
 
             } else {
