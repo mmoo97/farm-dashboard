@@ -26,4 +26,6 @@ public class Item extends FarmComponent {
         return;
     }
 
+    public double getPrice(){ return this.price;}
+
 }

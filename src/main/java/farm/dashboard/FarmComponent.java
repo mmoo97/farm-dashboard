@@ -66,6 +66,7 @@ public abstract class FarmComponent {
     public ArrayList<FarmComponent> getChildren(){
         return new ArrayList<FarmComponent>();
     }
+
     public String getName(){return name;}
 
     public double getPrice(){return price;}
@@ -90,6 +91,7 @@ public abstract class FarmComponent {
     public String toString() {
         return this.name;
     }
+
 
     /*
     @Override

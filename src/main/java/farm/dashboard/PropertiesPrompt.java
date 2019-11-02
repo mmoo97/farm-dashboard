@@ -52,21 +52,6 @@ public class PropertiesPrompt extends TextInputDialog {
         gridPane.add(height, 1, 6);
         gridPane.add(new Label("Height: "), 0, 6);
 
-        //guess ill add it here -CB
-        // not sure if it needs a menubar if so thats an easy add
-        // menu creation
-        Menu     menu  = new Menu("Type");
-        MenuItem item1 = new MenuItem("Cow");
-        MenuItem item2 = new MenuItem("Farm");
-        MenuItem item3 = new MenuItem("Fence");
-        MenuItem item4 = new MenuItem("whatever else");
-
-        //add it to the menuBar
-        menu.getItems().add(item1);
-        menu.getItems().add(item2);
-        menu.getItems().add(item3);
-        menu.getItems().add(item4);
-
         dialog.getDialogPane().setContent(gridPane);
 
         // Request focus on the name field by default.

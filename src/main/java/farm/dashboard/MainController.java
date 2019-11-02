@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.control.MultipleSelectionModel;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MainController{
+    @FXML
+    private VBox thing;
+
     @FXML
     private Button droneString;
 
@@ -34,6 +34,9 @@ public class MainController{
     private Button paintFarm;
 
     @FXML
+    private AnchorPane textField;
+
+    @FXML
     private AnchorPane drawingItems;
 
     @FXML
@@ -45,12 +48,22 @@ public class MainController{
     private ContextMenu menu = new ContextMenu();
 
     @FXML
-    public void treeMouseHandler(MouseEvent event){
+    public void treeMouseHandler(MouseEvent event) throws ClassNotFoundException {
         MouseButton button = event.getButton();
         if(button==MouseButton.SECONDARY){
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
             if (selected!=null) {
                 openContextMenu(selected, event.getScreenX(), event.getScreenY());
+                Text text1 = new Text();
+                Text text2 = new Text();
+                text1.setText("Purchase Price: " + selected.getValue().getPrice());
+                text2.setText("Current Market Value: " + selected.getValue().getPrice());
+                text1.setX(40); text1.setY(500);
+                VBox thing2 = new VBox();
+                thing2.getChildren().add(text1);
+                thing.getChildren().add(thing2);
+
+
             } else {
                 openContextMenu(componentTree.getRoot(), event.getScreenX(), event.getScreenY());
             }

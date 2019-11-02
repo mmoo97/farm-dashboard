@@ -76,5 +76,11 @@ public class ItemContainer extends FarmComponent {
         return items;
     }
 
-
+    public double getNetPrice(){
+        double price = 0;
+        for (int i = 0; i<items.size();i++){
+            price += items.get(i).price;
+        }
+        return price;
+    }
 }
