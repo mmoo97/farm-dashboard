@@ -118,8 +118,24 @@ public class ComponentContextMenu extends ContextMenu {
                 }
             }
         });
+        MenuItem item8 = new MenuItem("Change Market Value");
+        item8.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                TextInputDialog dialog = new TextInputDialog(String.valueOf(component.getMarketValue()));
 
-        this.getItems().addAll(item1, item2, item3, item4, item5);
+                dialog.setTitle("Change Market Value");
+                dialog.setHeaderText("Enter new Market Value:");
+                dialog.setContentText("Value:");
+
+                Optional<String> result = dialog.showAndWait();
+
+                result.ifPresent(marketValue -> {
+                    component.setMarketValue(Double.valueOf(marketValue));
+                });
+            }
+        });
+
+        this.getItems().addAll(item1, item2, item3, item4, item5, item8);
 
     }
 }
