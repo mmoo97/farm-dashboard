@@ -61,7 +61,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Fly Drone" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" onAction="#animateItem" text="Fly Drone" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                                  </children>
                               </GridPane>
                            </children></VBox>
@@ -69,7 +69,7 @@
                   </AnchorPane>
                 <AnchorPane fx:id="drawingItems" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
                      <children>
-                        <StackPane id="stack" layoutX="300.0" layoutY="265.0" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <StackPane id="stack" layoutX="300.0" layoutY="265.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
               </items>

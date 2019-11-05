@@ -3,17 +3,16 @@ package farm.dashboard;
 import java.lang.Math;
 import java.util.ArrayList;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.SequentialTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.TreeItem;
@@ -129,8 +128,8 @@ public class MainController{
     }
 
     public void drawFarm(){
-        drawingItems.getChildren().clear();
-        drawComponents(rootContainer);
+//        drawingItems.getChildren().clear();
+//        drawComponents(rootContainer);
     }
 
 
@@ -154,79 +153,87 @@ public class MainController{
         vComponent.setY(component.getLocationY());
 
         //StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
-        StackPane stack = new StackPane();
+        StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
         stack.setAlignment(Pos.BOTTOM_CENTER);
         stack.getChildren().addAll(vComponent, text);
 
-        drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
-        drawingItems.setBottomAnchor(stack, component.getLocationY());
-        drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
-        drawingItems.setLeftAnchor(stack, component.getLocationX());
-        drawingItems.getChildren().add(stack);
+//        drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
+//        drawingItems.setBottomAnchor(stack, component.getLocationY());
+//        drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
+//        drawingItems.setLeftAnchor(stack, component.getLocationX());
+//        drawingItems.getChildren().add(stack);
     }
+    @FXML
+    private void animateItem(){
+        //Todo: Expand animation functionality beyond just scanning
+//        double startX = item.location_x;
+//        double startY = item.location_y;
+//        double endX = 600.0; //x;
+//        double endY = 600.0; //y;
 
-    private void animateItem(Item item, double x, double y){
-        double startX = item.location_x;
-        double startY = item.location_y;
-        double endX = x;
-        double endY = y;
+        StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
 
-        // Create the Timelines
-        Timeline rotate = new Timeline();
-        Timeline moveDiagonal = new Timeline();
-        Timeline moveUp = new Timeline();
-        Timeline rotateNext = new Timeline();
-        Timeline rotateLast = new Timeline();
-        Timeline moveLeft = new Timeline();
-        SequentialTransition sequence = new SequentialTransition();
+        ImageView car = new ImageView();
+        car.setImage(new Image("farm.dashboard/drone.png"));
+        car.setX(0);
+        car.setY(0);
+        car.setTranslateX(0.00);
+        car.setTranslateY(0.00);
+        car.setRotate(90);
 
-        ImageView drone = new ImageView(new Image("farm.dashboard/drone.png"));
+        PathElement[] path =
+                {
+//                        new MoveTo(0, 300),
+//                        new ArcTo(100, 100, 0, 100, 400, false, false),
+//                        new LineTo(300, 400),
+//                        new ArcTo(100, 100, 0, 400, 300, false, false),
+//                        new LineTo(400, 100),
+//                        new ArcTo(100, 100, 0, 300, 0, false, false),
+//                        new LineTo(100, 0),
+//                        new ArcTo(100, 100, 0, 0, 100, false, false),
+//                        new LineTo(0, 300),
+                        new MoveTo(0,0),
+                        new LineTo(0,-100),
+                        new ArcTo(100,100,0, -100, -200, false, false),
+                        new LineTo(-200,-200),
+                        new ArcTo(100,100,0, -250, -100, false, false),
+                        new LineTo(-250,150),
+                        new ArcTo(100,100,0, -150, 250, false, false),
+                        new LineTo(300,250),
+                        new ArcTo(100,100,0, 400, 100, false, false),
+                        new LineTo(400, -200),
+                        new ClosePath()
+                };
 
-        // Get the Scene width and height along with image width
-        double sceneWidth = item.getWidth();
-        double sceneHeight = item.getHeight();
-        double droneWidth = drone.getLayoutBounds().getWidth();
+        Path road = new Path();
+        road.setStroke(Color.WHITE);
+        road.setStrokeWidth(75);
+        road.getElements().addAll(path);
 
-        // Define the Durations
-        Duration startDuration = Duration.ZERO;
-        Duration endDuration = Duration.seconds(5);
-        Duration endDuration2 = Duration.seconds(2);
+        PathTransition anim = new PathTransition();
+        anim.setNode(car);
+        anim.setPath(road);
+        anim.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        anim.setInterpolator(Interpolator.LINEAR);
+        anim.setDuration(new Duration(6000));
+        anim.setCycleCount(Timeline.INDEFINITE);
 
-        // Create Key Frames
-        KeyValue startKeyValue = new KeyValue(drone.translateXProperty(), 0);
-        KeyFrame startKeyFrameDiagonal = new KeyFrame(startDuration, startKeyValue);
-        KeyValue endKeyValueX = new KeyValue(drone.translateXProperty(), sceneWidth - droneWidth*1.5);
-        KeyValue endKeyValueY = new KeyValue(drone.translateYProperty(), sceneHeight - droneWidth*2.375);
-        KeyFrame endKeyFrameDiagonal = new KeyFrame(endDuration, endKeyValueX, endKeyValueY);
+        Group root = new Group();
+        root.getChildren().addAll(road, car);
+        root.setTranslateX(50);
+        root.setTranslateY(50);
+        stack.getChildren().addAll(car);
+        anim.play();
+//        root.setOnMouseClicked(me ->
+//        {
+//            Animation.Status status = anim.getStatus();
+//            if (status == Animation.Status.RUNNING &&
+//                    status != Animation.Status.PAUSED)
+//                anim.pause();
+//            else
+//                anim.play();
+//        });
 
-
-        KeyValue endKeyValueRotate = new KeyValue(drone.rotateProperty(), drone.getRotate() - 90);
-        KeyFrame endKeyFrameRotate = new KeyFrame(endDuration2, endKeyValueRotate);
-
-        KeyValue endKeyValueMoveUp = new KeyValue(drone.translateYProperty(), 0);
-        KeyFrame endKeyFrameMoveUp = new KeyFrame(endDuration, endKeyValueMoveUp);
-
-        KeyValue endKeyValueRotateNext = new KeyValue(drone.rotateProperty(),  drone.getRotate() - 180);
-        KeyFrame endKeyFrameRotateNext = new KeyFrame(endDuration2, endKeyValueRotateNext);
-
-        KeyValue endKeyValueMoveLeft = new KeyValue(drone.translateXProperty(), 0);
-        KeyFrame endKeyFrameMoveLeft = new KeyFrame(endDuration, endKeyValueMoveLeft);
-
-        KeyValue endKeyValueRotateLast = new KeyValue(drone.rotateProperty(),  drone.getRotate() - 360);
-        KeyFrame endKeyFrameRotateLast = new KeyFrame(endDuration2, endKeyValueRotateLast);
-
-        // Create Timelines
-        rotate = new Timeline(endKeyFrameRotate);
-        rotateNext = new Timeline(endKeyFrameRotateNext);
-        moveDiagonal = new Timeline(startKeyFrameDiagonal, endKeyFrameDiagonal);
-        moveUp = new Timeline(endKeyFrameMoveUp);
-        moveLeft = new Timeline(endKeyFrameMoveLeft);
-        rotateLast = new Timeline(endKeyFrameRotateLast);
-
-        // Create Sequence
-        sequence = new SequentialTransition(moveDiagonal, rotate, moveUp, rotateNext, moveLeft, rotateLast);
-        // Let the animation run forever
-        sequence.setCycleCount(Timeline.INDEFINITE);
     }
 
     private String getImageURIPath(String imageName){
