@@ -11,6 +11,7 @@ import javafx.scene.control.TextInputDialog;
 public class ComponentContextMenu extends ContextMenu {
     FarmComponent component;
 
+
     public ComponentContextMenu(FarmComponent c){
         super();
         this.component = c;
