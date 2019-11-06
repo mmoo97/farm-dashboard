@@ -18,6 +18,6 @@ class PricingVisitor extends Visitor {
     }
 
     public double getValue(){
-        return total;
+       return total;
     }
 }
