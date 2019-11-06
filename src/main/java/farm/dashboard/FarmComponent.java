@@ -1,17 +1,24 @@
 package farm.dashboard;
 
+import java.util.ArrayList;
+import javafx.scene.control.ContextMenu;
+
 public abstract class FarmComponent {
     FarmComponent parent;
     public String name;
     public double price;
-    public int location_x;
-    public int location_y;
+    public double market_value;
+    public double location_x;
+    public double location_y;
     public int length;
     public int width;
     public int height;
+    protected String imageName;
+    protected ContextMenu contextMenu;
 
     public void delete(){
-        parent.remove(this);
+        // parent.remove(this);
+        throw new UnsupportedOperationException("Cannot delete from within an item");
     };
 
     public boolean remove(FarmComponent component){
@@ -35,11 +42,15 @@ public abstract class FarmComponent {
         this.price = price;
     }
 
-    public void setLocationX(int x){
+    public void setMarketValue(double market_value){
+        this.market_value = market_value;
+    }
+
+    public void setLocationX(double x){
         this.location_x = x;
     }
 
-    public void setLocationY(int y){
+    public void setLocationY(double y){
         this.location_y = y;
     }
 
@@ -56,17 +67,56 @@ public abstract class FarmComponent {
     }
 
     public FarmComponent getParent(){return parent;}
+
+    public ArrayList<FarmComponent> getChildren(){
+        return new ArrayList<FarmComponent>();
+    }
+
+    public double getMarketValue(){
+        return this.market_value;
+    }
+
     public String getName(){return name;}
 
     public double getPrice(){return price;}
 
-    public int getLocationX(){return location_x;}
+    public double getLocationX(){return location_x;}
 
-    public int getLocationY(){return location_y;}
+    public double getLocationY(){return location_y;}
 
     public int getLength(){return length;}
 
     public int getWidth(){return width;}
 
     public int getHeight(){return height;}
+
+    public String getImageName(){return imageName;}
+
+    public ContextMenu getContextMenu(){
+        return contextMenu;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    public abstract void accept(Visitor v);
+
+
+    /*
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null || obj.getClass()!= this.getClass()){
+            return false;
+        }
+
+        FarmComponent c = (FarmComponent) obj;
+        if (name.equals(c.name)){
+            return true;
+        }
+        return false;
+    }
+    */
+
 }
