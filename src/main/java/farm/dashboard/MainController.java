@@ -21,6 +21,10 @@ public class MainController{
     @FXML
     private VBox thing;
 
+    private Text text = new Text(10, 20,"Purchase Price:");
+    private Text text2 = new Text("Current Market Value:");
+
+
     @FXML
     private Button droneString;
 
@@ -54,20 +58,30 @@ public class MainController{
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
             if (selected!=null) {
                 openContextMenu(selected, event.getScreenX(), event.getScreenY());
-                Text text1 = new Text();
-                Text text2 = new Text();
-                text1.setText("Purchase Price: " + selected.getValue().getPrice());
-                text2.setText("Current Market Value: " + selected.getValue().getPrice());
-
-                thing.getChildren().add(text1);
-                thing.getChildren().add(text2);
-
-
             } else {
                 openContextMenu(componentTree.getRoot(), event.getScreenX(), event.getScreenY());
             }
         }else{
             menu.hide();
+        }
+
+        if( button == MouseButton.PRIMARY){
+            thing.getChildren().remove(text);
+            thing.getChildren().remove(text2);
+            TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
+            if( selected.getValue() instanceof ItemContainer ) {
+                PricingVisitor vis = new PricingVisitor();
+                vis.getValue();
+                text.setText("Purchase Price:" + vis.getValue());
+                text2.setText("Market Price: something Needed to Add!" );
+                thing.getChildren().add(text);
+                thing.getChildren().add(text2);
+            } else{
+                text.setText("Purchase Price: " + selected.getValue().getPrice());
+                text2.setText("Market Value: something to add later");
+                thing.getChildren().add(text);
+                thing.getChildren().add(text2);
+            }
         }
     }
 
