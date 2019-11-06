@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
 import javafx.scene.input.MouseButton;
@@ -72,12 +73,16 @@ public class MainController{
             if( selected.getValue() instanceof ItemContainer ) {
                 PricingVisitor vis = new PricingVisitor();
                 text.setText("Purchase Price:" );
+                text.setFont(Font.font("Verdana", 20));
                 text2.setText("Market Price: " );
+                text2.setFont(Font.font("Verdana", 20));
                 thing.getChildren().add(text);
                 thing.getChildren().add(text2);
             } else{
                 text.setText("Purchase Price: " + selected.getValue().getPrice());
+                text.setFont(Font.font("Verdana", 20));
                 text2.setText("Market Value: something to add later");
+                text2.setFont(Font.font("Verdana", 20));
                 thing.getChildren().add(text);
                 thing.getChildren().add(text2);
             }
