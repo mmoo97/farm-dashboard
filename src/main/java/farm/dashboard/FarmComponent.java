@@ -92,6 +92,8 @@ public abstract class FarmComponent {
         return this.name;
     }
 
+    public abstract void accept(Visitor v);
+
 
     /*
     @Override

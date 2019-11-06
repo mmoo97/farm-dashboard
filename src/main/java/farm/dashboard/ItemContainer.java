@@ -83,4 +83,8 @@ public class ItemContainer extends FarmComponent {
         }
         return price;
     }
+
+    public void accept(Visitor v){
+        v.visitItemContainer(this);
+    }
 }
