@@ -16,6 +16,16 @@ public class Item extends FarmComponent {
         this.contextMenu = new ComponentContextMenu(this);
     }
 
+    public Item(String name, double price, double x, double y, int length, int width, int height, double market_value){
+        this(name, price, x, y, length, width, height);
+        this.market_value = market_value;
+    }
+
+    public Item(String name, double price, double x, double y, int length, int width, int height, double market_value, String imageName){
+        this(name, price, x, y, length, width, height, imageName);
+        this.market_value = market_value;
+    }
+
     public Item(String name, double price, double x, double y, int length, int width, int height, String imageName){
         this(name, price, x, y, length, width, height);
         this.imageName = imageName;

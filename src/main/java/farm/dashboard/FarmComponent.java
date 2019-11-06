@@ -7,6 +7,7 @@ public abstract class FarmComponent {
     FarmComponent parent;
     public String name;
     public double price;
+    public double market_value;
     public double location_x;
     public double location_y;
     public int length;
@@ -41,6 +42,10 @@ public abstract class FarmComponent {
         this.price = price;
     }
 
+    public void setMarketValue(double market_value){
+        this.market_value = market_value;
+    }
+
     public void setLocationX(double x){
         this.location_x = x;
     }
@@ -65,6 +70,10 @@ public abstract class FarmComponent {
 
     public ArrayList<FarmComponent> getChildren(){
         return new ArrayList<FarmComponent>();
+    }
+
+    public double getMarketValue(){
+        return this.market_value;
     }
 
     public String getName(){return name;}

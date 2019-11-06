@@ -10,10 +10,10 @@ Running the code should be straight forward.
 * At any point, you can use `ctrl-c` to terminate the program from the command line.
 * There is a `.gitignore` which should ignore most temp files made by `Gradle` and `Java`. When you are ready to deploy code, the command: `./gradlew clean` should be run to clear any cached or temp files that could be system specific.
 ## Gradle Clarifications:
-What Gradle builds and runs is based on a file called `build.gradle`. It will be helpful to look at the contents of the file to understand what is going on.Specifically, there is a section that tells `Java` which class to treat as the `MainClass`. This is found on line 38, and currently points to `HelloWorld.java`.
+What Gradle builds and runs is based on a file called `build.gradle`. It will be helpful to look at the contents of the file to understand what is going on.Specifically, there is a section that tells `Java` which class to treat as the `MainClass`. This is found on line 38, and currently points to `AppLauncher.java`.
 
 ```java
-mainClassName = 'farm.dashboard.HelloWorld'
+mainClassName = 'farm.dashboard.AppLauncher'
 
 // Define the main class for the application
 application {
@@ -28,6 +28,7 @@ This project conforms to both the Naming and the layout conventions for `Java` p
 
 ```bash
 .
+├── README.md
 ├── build.gradle
 ├── gradle
 │   └── wrapper
@@ -35,24 +36,37 @@ This project conforms to both the Naming and the layout conventions for `Java` p
 │       └── gradle-wrapper.properties
 ├── gradlew
 ├── gradlew.bat
-├── README.md
 ├── settings.gradle
-└── src
-    ├── main
-    │   ├── java
-    │   │   └── farm
-    │   │       └── dashboard
-    │   │           ├── App.java
-    │   │           └── HelloWorld.java
-    │   └── resources
-    └── test
-        ├── java
-        │   └── farm
-        │       └── dashboard
-        │           └── AppTest.java
-        └── resources
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── farm
+│   │   │       └── dashboard
+│   │   │           ├── AppLauncher.java
+│   │   │           ├── ComponentContextMenu.java
+│   │   │           ├── DashboardApp.java
+│   │   │           ├── DroneAnimation.java
+│   │   │           ├── FarmComponent.java
+│   │   │           ├── Item.java
+│   │   │           ├── ItemContainer.java
+│   │   │           ├── MainController.java
+│   │   │           └── PropertiesPrompt.java
+│   │   └── resources
+│   │       └── farm.dashboard
+│   │           ├── MainLayout.fxml
+│   │           ├── drone.png
+│   │           └── placeholder.png
+│   └── test
+│       └── java
+│           └── farm
+│               └── dashboard
+│                   ├── AppLauncherTest.java
+│                   ├── DashboardAppTest.java
+│                   ├── ItemContainerTest.java
+│                   └── ItemTest.java
+└── test.txt
 
-13 directories, 10 files
+13 directories, 24 files
 ```
 You will notice that the project is named `farm-dashboard`, but the package is referred to in the `Java` files as `farm.dashboard`. This is `Java's` naming convention. You will need to have `package farm.dashboard;` as the very first line of every `java` file in your program.
 

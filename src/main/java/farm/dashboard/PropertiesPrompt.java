@@ -36,6 +36,7 @@ public class PropertiesPrompt extends TextInputDialog {
         TextField length = new TextField(String.valueOf(component.getLength()));
         TextField width = new TextField(String.valueOf(component.getWidth()));
         TextField height = new TextField(String.valueOf(component.getHeight()));
+        TextField market_value = new TextField(String.valueOf(component.getMarketValue()));
 
         gridPane.add(name, 1, 0);
         gridPane.add(new Label("Name: "), 0, 0);
@@ -51,6 +52,8 @@ public class PropertiesPrompt extends TextInputDialog {
         gridPane.add(new Label("Width: "), 0, 5);
         gridPane.add(height, 1, 6);
         gridPane.add(new Label("Height: "), 0, 6);
+        gridPane.add(market_value, 1, 7);
+        gridPane.add(new Label("Market Value: "), 0, 7);
 
         dialog.getDialogPane().setContent(gridPane);
 
@@ -68,6 +71,7 @@ public class PropertiesPrompt extends TextInputDialog {
                 properties.add(length.getText());
                 properties.add(width.getText());
                 properties.add(height.getText());
+                properties.add(market_value.getText());
 
                 //Todo: Error handling for values
 
@@ -87,6 +91,7 @@ public class PropertiesPrompt extends TextInputDialog {
             c.setLength(Integer.parseInt(pair.get(4)));
             c.setWidth(Integer.parseInt(pair.get(5)));
             c.setHeight(Integer.parseInt(pair.get(6)));
+            c.setMarketValue(Double.parseDouble(pair.get(7)));
         });
     }
 
