@@ -80,20 +80,24 @@ public class MainController{
             thing.getChildren().remove(text);
             thing.getChildren().remove(text2);
             PricingVisitor vis = new PricingVisitor();
+            MarketValueVisitor mvis = new MarketValueVisitor();
 
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
             if( selected.getValue() instanceof ItemContainer ) {
                 selected.getValue().accept(vis);
+                selected.getValue().accept(mvis);
                 text.setText("Purchase Price: " + vis.getValue());
+                text2.setText("Market Value: " + mvis.getValue());
                 text.setFont(Font.font(" Verdana",20));
                 text2.setFont(Font.font("Verdana", 20));
                 thing.getChildren().add(text);
                 thing.getChildren().add(text2);
             } else{
                 selected.getValue().accept(vis);
+                selected.getValue().accept(mvis);
                 text.setText("Purchase Price: " + vis.getValue());
                 text.setFont(Font.font("Verdana", 20));
-                text2.setText("Market Value: " + vis.getValue());
+                text2.setText("Market Value: " + mvis.getValue());
                 text2.setFont(Font.font("Verdana", 20));
                 thing.getChildren().add(text);
                 thing.getChildren().add(text2);

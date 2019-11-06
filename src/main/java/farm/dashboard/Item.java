@@ -38,6 +38,14 @@ public class Item extends FarmComponent {
 
     public double getPrice(){ return this.price;}
 
+    public double getNetPrice(){
+        return getPrice();
+    }
+
+    public double getNetMarketValue(){
+        return getMarketValue();
+    }
+
     public void accept(Visitor v){
         v.visitItem(this);
     }

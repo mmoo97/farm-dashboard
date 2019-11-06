@@ -96,6 +96,10 @@ public abstract class FarmComponent {
         return contextMenu;
     }
 
+    public abstract double getNetPrice();
+
+    public abstract double getNetMarketValue();
+
     @Override
     public String toString() {
         return this.name;
