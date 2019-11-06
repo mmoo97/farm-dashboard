@@ -14,6 +14,7 @@ import javafx.scene.control.TextInputDialog;
 public class ItemContainer extends FarmComponent {
 
     private ArrayList<FarmComponent> items =  new ArrayList<FarmComponent>();
+    private double marketValue;
 
     public ItemContainer(){
     }
@@ -87,4 +88,6 @@ public class ItemContainer extends FarmComponent {
     public void accept(Visitor v){
         v.visitItemContainer(this);
     }
+
+
 }

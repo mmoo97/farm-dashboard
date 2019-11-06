@@ -69,19 +69,21 @@ public class MainController{
         if( button == MouseButton.PRIMARY){
             thing.getChildren().remove(text);
             thing.getChildren().remove(text2);
+            PricingVisitor vis = new PricingVisitor();
+
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
             if( selected.getValue() instanceof ItemContainer ) {
-                PricingVisitor vis = new PricingVisitor();
                 selected.getValue().accept(vis);
-                text.setText("Purchase Price:" + vis.getValue());
-                text2.setText("Market Price: " );
+                text.setText("Purchase Price: " + vis.getValue());
+                text.setFont(Font.font(" Verdana",20));
                 text2.setFont(Font.font("Verdana", 20));
                 thing.getChildren().add(text);
                 thing.getChildren().add(text2);
             } else{
-                text.setText("Purchase Price: " + selected.getValue().getPrice());
+                selected.getValue().accept(vis);
+                text.setText("Purchase Price: " + vis.getValue());
                 text.setFont(Font.font("Verdana", 20));
-                text2.setText("Market Value: something to add later");
+                text2.setText("Market Value: " + vis.getValue());
                 text2.setFont(Font.font("Verdana", 20));
                 thing.getChildren().add(text);
                 thing.getChildren().add(text2);
