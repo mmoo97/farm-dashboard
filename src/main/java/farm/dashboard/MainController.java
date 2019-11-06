@@ -71,7 +71,6 @@ public class MainController{
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
             if( selected.getValue() instanceof ItemContainer ) {
                 PricingVisitor vis = new PricingVisitor();
-                vis.getValue();
                 text.setText("Purchase Price:" + vis.getValue());
                 text2.setText("Market Price: something Needed to Add!" );
                 thing.getChildren().add(text);
