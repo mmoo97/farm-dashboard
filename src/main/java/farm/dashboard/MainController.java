@@ -7,18 +7,18 @@ import javafx.animation.*;
 import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.scene.layout.StackPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.control.MultipleSelectionModel;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
@@ -30,7 +30,26 @@ import static farm.dashboard.AppLauncher.getInstance;
 
 public class MainController{
     @FXML
+    private VBox thing;
+
+    private Text text = new Text(10, 20,"Purchase Price:");
+    private Text text2 = new Text("Current Market Value:");
+
+
+    @FXML
+    private Button droneString;
+
+    @FXML
+    private Image droneImage = new Image("file:src/main/java/resources/farm.dashboard/drone.png");
+
+    @FXML
+    private ImageView imageView = new ImageView(droneImage);
+
+    @FXML
     private Button paintFarm;
+
+    @FXML
+    private AnchorPane textField;
 
     @FXML
     private AnchorPane drawingItems;
@@ -44,7 +63,7 @@ public class MainController{
     private ContextMenu menu = new ContextMenu();
 
     @FXML
-    public void treeMouseHandler(MouseEvent event){
+    public void treeMouseHandler(MouseEvent event) throws ClassNotFoundException {
         MouseButton button = event.getButton();
         if(button==MouseButton.SECONDARY){
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
@@ -55,6 +74,30 @@ public class MainController{
             }
         }else{
             menu.hide();
+        }
+
+        if( button == MouseButton.PRIMARY){
+            thing.getChildren().remove(text);
+            thing.getChildren().remove(text2);
+            PricingVisitor vis = new PricingVisitor();
+
+            TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
+            if( selected.getValue() instanceof ItemContainer ) {
+                selected.getValue().accept(vis);
+                text.setText("Purchase Price: " + vis.getValue());
+                text.setFont(Font.font(" Verdana",20));
+                text2.setFont(Font.font("Verdana", 20));
+                thing.getChildren().add(text);
+                thing.getChildren().add(text2);
+            } else{
+                selected.getValue().accept(vis);
+                text.setText("Purchase Price: " + vis.getValue());
+                text.setFont(Font.font("Verdana", 20));
+                text2.setText("Market Value: " + vis.getValue());
+                text2.setFont(Font.font("Verdana", 20));
+                thing.getChildren().add(text);
+                thing.getChildren().add(text2);
+            }
         }
     }
 
@@ -141,10 +184,10 @@ public class MainController{
         }
     }
 
-    private void drawComponent(FarmComponent component){
+    private void drawComponent(FarmComponent component) {
         Text text = new Text(component.getName());
 
-        String imageName = component.getImageName()!=null ? component.getImageName() : "placeholder.png";
+        String imageName = component.getImageName() != null ? component.getImageName() : "placeholder.png";
         ImageView vComponent = new ImageView(new Image(getImageURIPath(imageName)));
 
         vComponent.setFitWidth(component.getWidth());
@@ -157,12 +200,13 @@ public class MainController{
         stack.setAlignment(Pos.BOTTOM_CENTER);
         stack.getChildren().addAll(vComponent, text);
 
-//        drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
-//        drawingItems.setBottomAnchor(stack, component.getLocationY());
-//        drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
-//        drawingItems.setLeftAnchor(stack, component.getLocationX());
-//        drawingItems.getChildren().add(stack);
+        drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
+        drawingItems.setBottomAnchor(stack, component.getLocationY());
+        drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
+        drawingItems.setLeftAnchor(stack, component.getLocationX());
+        drawingItems.getChildren().add(stack);
     }
+
     @FXML
     private void animateItem(){
         //Todo: Expand animation functionality beyond just scanning
@@ -239,6 +283,12 @@ public class MainController{
     private String getImageURIPath(String imageName){
         return "file:src/main/resources/farm.dashboard/" + imageName;
     }
+    //alright so setX and Y will move the image respectfully
+    public void droneConvert(){
+        System.out.println("x prop " + imageView.xProperty() + "y prop " + imageView.yProperty());
+        imageView.setX(250.0); imageView.setY(300);
+    }
 
 }
+
 

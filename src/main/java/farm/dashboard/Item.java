@@ -36,4 +36,10 @@ public class Item extends FarmComponent {
         return;
     }
 
+    public double getPrice(){ return this.price;}
+
+    public void accept(Visitor v){
+        v.visitItem(this);
+    }
+
 }
