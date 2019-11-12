@@ -70,15 +70,7 @@
                   </AnchorPane>
                 <AnchorPane fx:id="drawingItems" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
                      <children>
-                        <Pane
-                                layoutX="300.0" layoutY="265.0" prefHeight="800.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image fx:id="droneImage" url="@drone.png" />
-                                 </image>
-                              </ImageView>
-                           </children></Pane>
+                         <StackPane id="stack" layoutX="300.0" layoutY="265.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
               </items>
