@@ -171,8 +171,8 @@ public class MainController{
     }
 
     public void drawFarm(){
-//        drawingItems.getChildren().clear();
-//        drawComponents(rootContainer);
+        drawingItems.getChildren().clear();
+        drawComponents(rootContainer);
     }
 
 
@@ -195,9 +195,8 @@ public class MainController{
         vComponent.setX(component.getLocationX());
         vComponent.setY(component.getLocationY());
 
-        //StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
+
         StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
-        stack.setAlignment(Pos.BOTTOM_CENTER);
         stack.getChildren().addAll(vComponent, text);
 
         drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
@@ -227,15 +226,6 @@ public class MainController{
 
         PathElement[] path =
                 {
-//                        new MoveTo(0, 300),
-//                        new ArcTo(100, 100, 0, 100, 400, false, false),
-//                        new LineTo(300, 400),
-//                        new ArcTo(100, 100, 0, 400, 300, false, false),
-//                        new LineTo(400, 100),
-//                        new ArcTo(100, 100, 0, 300, 0, false, false),
-//                        new LineTo(100, 0),
-//                        new ArcTo(100, 100, 0, 0, 100, false, false),
-//                        new LineTo(0, 300),
                         new MoveTo(0,0),
                         new LineTo(0,-100),
                         new ArcTo(100,100,0, -100, -200, false, false),

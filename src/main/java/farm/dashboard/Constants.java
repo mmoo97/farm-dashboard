@@ -1,4 +1,4 @@
-
+package farm.dashboard;
 
 /***
  * Convenience class for storing constants needed for piping, conversion, and flight

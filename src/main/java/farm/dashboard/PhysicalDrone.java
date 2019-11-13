@@ -1,4 +1,4 @@
-
+package farm.dashboard;
 
 /***
  * Interface containing a selection of possible drone flight commands mostly independent of drone manufacturer
