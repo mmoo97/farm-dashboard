@@ -29,6 +29,97 @@ This project conforms to both the Naming and the layout conventions for `Java` p
 ```bash
 .
 ├── README.md
+├── Tello3ToJava.py
+├── build
+│   ├── classes
+│   │   └── java
+│   │       ├── main
+│   │       │   └── farm
+│   │       │       └── dashboard
+│   │       │           ├── Adapter.class
+│   │       │           ├── AppLauncher.class
+│   │       │           ├── ComponentContextMenu$1.class
+│   │       │           ├── ComponentContextMenu$2.class
+│   │       │           ├── ComponentContextMenu$3.class
+│   │       │           ├── ComponentContextMenu$4.class
+│   │       │           ├── ComponentContextMenu$5.class
+│   │       │           ├── ComponentContextMenu$6.class
+│   │       │           ├── ComponentContextMenu.class
+│   │       │           ├── Constants.class
+│   │       │           ├── DashboardApp.class
+│   │       │           ├── FarmComponent.class
+│   │       │           ├── Item.class
+│   │       │           ├── ItemContainer$1.class
+│   │       │           ├── ItemContainer$2.class
+│   │       │           ├── ItemContainer.class
+│   │       │           ├── MainController.class
+│   │       │           ├── PathTDemo.class
+│   │       │           ├── PhysicalDrone.class
+│   │       │           ├── PhysicalDroneTello.class
+│   │       │           ├── PricingVisitor.class
+│   │       │           ├── PropertiesPrompt.class
+│   │       │           ├── SimulatedDrone.class
+│   │       │           ├── SimulatedDroneFlight.class
+│   │       │           ├── TelloJavaToPython.class
+│   │       │           └── Visitor.class
+│   │       └── test
+│   │           └── farm
+│   │               └── dashboard
+│   │                   ├── AppLauncherTest.class
+│   │                   ├── DashboardAppTest.class
+│   │                   ├── ItemContainerTest.class
+│   │                   └── ItemTest.class
+│   ├── distributions
+│   │   ├── farm-dashboard.tar
+│   │   └── farm-dashboard.zip
+│   ├── generated
+│   │   └── sources
+│   │       └── annotationProcessor
+│   │           └── java
+│   │               ├── main
+│   │               └── test
+│   ├── libs
+│   │   └── farm-dashboard.jar
+│   ├── reports
+│   │   └── tests
+│   │       └── test
+│   │           ├── classes
+│   │           │   ├── farm.dashboard.AppLauncherTest.html
+│   │           │   ├── farm.dashboard.DashboardAppTest.html
+│   │           │   ├── farm.dashboard.ItemContainerTest.html
+│   │           │   └── farm.dashboard.ItemTest.html
+│   │           ├── css
+│   │           │   ├── base-style.css
+│   │           │   └── style.css
+│   │           ├── index.html
+│   │           ├── js
+│   │           │   └── report.js
+│   │           └── packages
+│   │               └── farm.dashboard.html
+│   ├── resources
+│   │   └── main
+│   │       └── farm.dashboard
+│   │           ├── MainLayout.fxml
+│   │           ├── drone.png
+│   │           └── placeholder.png
+│   ├── scripts
+│   │   ├── farm-dashboard
+│   │   └── farm-dashboard.bat
+│   ├── test-results
+│   │   └── test
+│   │       ├── TEST-farm.dashboard.AppLauncherTest.xml
+│   │       ├── TEST-farm.dashboard.DashboardAppTest.xml
+│   │       ├── TEST-farm.dashboard.ItemContainerTest.xml
+│   │       ├── TEST-farm.dashboard.ItemTest.xml
+│   │       └── binary
+│   │           ├── output.bin
+│   │           ├── output.bin.idx
+│   │           └── results.bin
+│   └── tmp
+│       ├── compileJava
+│       ├── compileTestJava
+│       └── jar
+│           └── MANIFEST.MF
 ├── build.gradle
 ├── gradle
 │   └── wrapper
@@ -36,37 +127,93 @@ This project conforms to both the Naming and the layout conventions for `Java` p
 │       └── gradle-wrapper.properties
 ├── gradlew
 ├── gradlew.bat
-├── settings.gradle
-├── src
-│   ├── main
-│   │   ├── java
+├── out
+│   ├── production
+│   │   ├── classes
+│   │   │   ├── META-INF
+│   │   │   │   └── farm-dashboard.main.kotlin_module
 │   │   │   └── farm
 │   │   │       └── dashboard
-│   │   │           ├── AppLauncher.java
-│   │   │           ├── ComponentContextMenu.java
-│   │   │           ├── DashboardApp.java
-│   │   │           ├── DroneAnimation.java
-│   │   │           ├── FarmComponent.java
-│   │   │           ├── Item.java
-│   │   │           ├── ItemContainer.java
-│   │   │           ├── MainController.java
-│   │   │           └── PropertiesPrompt.java
+│   │   │           ├── Adapter.class
+│   │   │           ├── AppLauncher.class
+│   │   │           ├── ComponentContextMenu$1.class
+│   │   │           ├── ComponentContextMenu$2.class
+│   │   │           ├── ComponentContextMenu$3.class
+│   │   │           ├── ComponentContextMenu$4.class
+│   │   │           ├── ComponentContextMenu$5.class
+│   │   │           ├── ComponentContextMenu$6.class
+│   │   │           ├── ComponentContextMenu.class
+│   │   │           ├── Constants.class
+│   │   │           ├── DashboardApp.class
+│   │   │           ├── FarmComponent.class
+│   │   │           ├── Item.class
+│   │   │           ├── ItemContainer$1.class
+│   │   │           ├── ItemContainer$2.class
+│   │   │           ├── ItemContainer.class
+│   │   │           ├── MainController.class
+│   │   │           ├── PathTDemo.class
+│   │   │           ├── PhysicalDrone.class
+│   │   │           ├── PhysicalDroneTello.class
+│   │   │           ├── PricingVisitor.class
+│   │   │           ├── PropertiesPrompt.class
+│   │   │           ├── SimulatedDrone.class
+│   │   │           ├── SimulatedDroneFlight.class
+│   │   │           ├── TelloJavaToPython.class
+│   │   │           └── Visitor.class
 │   │   └── resources
 │   │       └── farm.dashboard
 │   │           ├── MainLayout.fxml
 │   │           ├── drone.png
 │   │           └── placeholder.png
 │   └── test
-│       └── java
+│       └── classes
 │           └── farm
 │               └── dashboard
-│                   ├── AppLauncherTest.java
-│                   ├── DashboardAppTest.java
-│                   ├── ItemContainerTest.java
-│                   └── ItemTest.java
-└── test.txt
+│                   ├── AppLauncherTest.class
+│                   ├── DashboardAppTest.class
+│                   ├── ItemContainerTest.class
+│                   └── ItemTest.class
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── farm
+    │   │       └── dashboard
+    │   │           ├── Adapter.java
+    │   │           ├── AppLauncher.java
+    │   │           ├── AppLauncher.java.orig
+    │   │           ├── ComponentContextMenu.java
+    │   │           ├── Constants.java
+    │   │           ├── DashboardApp.java
+    │   │           ├── FarmComponent.java
+    │   │           ├── Item.java
+    │   │           ├── ItemContainer.java
+    │   │           ├── MainController.java
+    │   │           ├── PathTDemo.java
+    │   │           ├── PhysicalDrone.java
+    │   │           ├── PhysicalDroneTello.java
+    │   │           ├── PricingVistor.java
+    │   │           ├── PropertiesPrompt.java
+    │   │           ├── SimulatedDrone.java
+    │   │           ├── SimulatedDroneFlight.java
+    │   │           ├── TelloJavaToPython.java
+    │   │           └── Visitor.java
+    │   └── resources
+    │       └── farm.dashboard
+    │           ├── MainLayout.fxml
+    │           ├── drone.png
+    │           └── placeholder.png
+    └── test
+        └── java
+            └── farm
+                └── dashboard
+                    ├── AppLauncherTest.java
+                    ├── DashboardAppTest.java
+                    ├── ItemContainerTest.java
+                    └── ItemTest.java
 
-13 directories, 24 files
+60 directories, 123 files
+
 ```
 You will notice that the project is named `farm-dashboard`, but the package is referred to in the `Java` files as `farm.dashboard`. This is `Java's` naming convention. You will need to have `package farm.dashboard;` as the very first line of every `java` file in your program.
 
