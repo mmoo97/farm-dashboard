@@ -120,7 +120,7 @@ public class SimulatedDroneFlight implements SimulatedDrone {
     }
 
     @Override @FXML
-    public void missionPadDirection(int param) {
+    public void missionPadDirection(int param){
 
     }
 
@@ -141,7 +141,7 @@ public class SimulatedDroneFlight implements SimulatedDrone {
 
     @Override @FXML
     public void flyBackward(int back) {
-
+        car
     }
 
     @Override @FXML
