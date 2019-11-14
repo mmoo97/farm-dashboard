@@ -141,7 +141,7 @@ public class SimulatedDroneFlight implements SimulatedDrone {
 
     @Override @FXML
     public void flyBackward(int back) {
-        car
+
     }
 
     @Override @FXML
