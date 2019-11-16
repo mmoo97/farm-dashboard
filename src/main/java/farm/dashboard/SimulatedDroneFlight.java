@@ -14,6 +14,9 @@ import javafx.scene.shape.*;
 import javafx.util.Duration;
 
 import java.beans.EventHandler;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static farm.dashboard.AppLauncher.app;
 
@@ -25,6 +28,7 @@ public class SimulatedDroneFlight implements SimulatedDrone {
 
     @FXML
     private StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
+    private ImageView car;
 
 
     public SimulatedDroneFlight(){
@@ -34,20 +38,51 @@ public class SimulatedDroneFlight implements SimulatedDrone {
     public SimulatedDroneFlight(double x_destination, double y_destination) {
         this.x_destination = x_destination;
         this.y_destination = y_destination;
+
     }
 
     public SimulatedDroneFlight(FarmComponent component){
+
         this.component = component;
         this.x_destination = component.getLocationX();
         this.y_destination = component.getLocationY();
     }
 
+    private void setup(PathElement[] path, int speed, boolean deleteOnFinish){
+
+        Path road = new Path();
+        road.setStroke(Color.BLACK);
+        road.setStrokeWidth(75);
+        road.getElements().addAll(path);
+
+        PathTransition anim = new PathTransition();
+        anim.setNode(car);
+        anim.setPath(road);
+        anim.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        anim.setInterpolator(Interpolator.LINEAR);
+        anim.setDuration(new Duration(speed));
+        anim.setCycleCount(1);
+
+        stack.getChildren().addAll(car);
+        if (deleteOnFinish)
+            anim.setOnFinished(event -> deleteDrone(car));
+        anim.play();
+//        root.setOnMouseClicked(me ->
+//        {
+//            Animation.Status status = anim.getStatus();
+//            if (status == Animation.Status.RUNNING &&
+//                    status != Animation.Status.PAUSED)
+//                anim.pause();
+//            else
+//                anim.play();
+//        });
+
+    }
+
     @FXML
     public void scanFarm(int speed){
 
-        StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
-
-        ImageView car = new ImageView();
+        car = new ImageView();
         car.setImage(new Image("farm.dashboard/drone.png"));
 
         PathElement[] path =
@@ -83,31 +118,22 @@ public class SimulatedDroneFlight implements SimulatedDrone {
                         new ClosePath()
                 };
 
-        Path road = new Path();
-        road.setStroke(Color.BLACK);
-        road.setStrokeWidth(75);
-        road.getElements().addAll(path);
+        setup(path, speed, true);
 
-        PathTransition anim = new PathTransition();
-        anim.setNode(car);
-        anim.setPath(road);
-        anim.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-        anim.setInterpolator(Interpolator.LINEAR);
-        anim.setDuration(new Duration(speed));
-        anim.setCycleCount(1);
+    }
 
-        stack.getChildren().addAll(car);
-        anim.setOnFinished(event -> deleteDrone(car));
-        anim.play();
-//        root.setOnMouseClicked(me ->
-//        {
-//            Animation.Status status = anim.getStatus();
-//            if (status == Animation.Status.RUNNING &&
-//                    status != Animation.Status.PAUSED)
-//                anim.pause();
-//            else
-//                anim.play();
-//        });
+    public void flytoLocation(int speed){
+
+        car = new ImageView();
+        car.setImage(new Image("farm.dashboard/drone.png"));
+
+        PathElement[] path =
+                {       new MoveTo(-350, 300),
+                        new LineTo(x_destination,y_destination),
+                        new ClosePath()
+                };
+
+            setup(path, speed, false);
 
     }
     @Override
@@ -127,7 +153,7 @@ public class SimulatedDroneFlight implements SimulatedDrone {
 
     @Override @FXML
     public void land() {
-
+        // Not necessary to implement
     }
 
     @Override

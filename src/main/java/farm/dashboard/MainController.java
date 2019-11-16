@@ -210,7 +210,11 @@ public class MainController{
     private void animateDrone(){
 
         SimulatedDroneFlight scan = new SimulatedDroneFlight();
-        scan.scanFarm(10000); //speed in milliseconds
+        scan.scanFarm(5000); //speed in milliseconds
+
+        SimulatedDroneFlight to_location = new SimulatedDroneFlight(0, 0);
+
+        to_location.flytoLocation(10000);
 
     }
 
