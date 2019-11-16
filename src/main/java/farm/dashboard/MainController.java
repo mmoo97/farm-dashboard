@@ -206,7 +206,13 @@ public class MainController{
         drawingItems.getChildren().add(stack);
     }
 
+    @FXML
+    private void animateDrone(){
 
+        SimulatedDroneFlight scan = new SimulatedDroneFlight();
+        scan.scanFarm(10000); //speed in milliseconds
+
+    }
 
     private String getImageURIPath(String imageName){
         return "file:src/main/resources/farm.dashboard/" + imageName;

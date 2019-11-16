@@ -1,5 +1,7 @@
 package farm.dashboard;
 
+import javafx.scene.image.ImageView;
+
 public class Adapter implements SimulatedDrone, PhysicalDrone{
     @Override
     public void beginProgram() {
@@ -209,5 +211,10 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
     @Override
     public String getSerialNumber() {
         return null;
+    }
+
+    @Override
+    public void deleteDrone(ImageView drone) {
+
     }
 }

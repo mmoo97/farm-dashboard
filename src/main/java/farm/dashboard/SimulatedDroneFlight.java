@@ -3,6 +3,7 @@ package farm.dashboard;
 import javafx.animation.Interpolator;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -12,45 +13,78 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 
+import java.beans.EventHandler;
+
 import static farm.dashboard.AppLauncher.app;
 
 public class SimulatedDroneFlight implements SimulatedDrone {
 
+    private double x_destination;
+    private double y_destination;
+    private FarmComponent component;
+
     @FXML
-    private void animateItem(){
-        //Todo: Expand animation functionality beyond just scanning
-//        double startX = item.location_x;
-//        double startY = item.location_y;
-//        double endX = 600.0; //x;
-//        double endY = 600.0; //y;
+    private StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
+
+
+    public SimulatedDroneFlight(){
+
+    }
+
+    public SimulatedDroneFlight(double x_destination, double y_destination) {
+        this.x_destination = x_destination;
+        this.y_destination = y_destination;
+    }
+
+    public SimulatedDroneFlight(FarmComponent component){
+        this.component = component;
+        this.x_destination = component.getLocationX();
+        this.y_destination = component.getLocationY();
+    }
+
+    @FXML
+    public void scanFarm(int speed){
 
         StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
 
         ImageView car = new ImageView();
         car.setImage(new Image("farm.dashboard/drone.png"));
-        car.setX(0);
-        car.setY(0);
-        car.setTranslateX(0.00);
-        car.setTranslateY(0.00);
-        car.setRotate(90);
 
         PathElement[] path =
                 {
-                        new MoveTo(0,0),
-                        new LineTo(0,-100),
-                        new ArcTo(100,100,0, -100, -200, false, false),
-                        new LineTo(-200,-200),
-                        new ArcTo(100,100,0, -250, -100, false, false),
-                        new LineTo(-250,150),
-                        new ArcTo(100,100,0, -150, 250, false, false),
-                        new LineTo(300,250),
-                        new ArcTo(100,100,0, 400, 100, false, false),
-                        new LineTo(400, -200),
+                        new MoveTo(-350,300),
+                        new LineTo(400,300),
+                        new LineTo(400,250),
+                        new LineTo(-350,250),
+
+                        new LineTo(-350,200),
+                        new LineTo(400,200),
+                        new LineTo(400,150),
+                        new LineTo(-350,150),
+
+                        new LineTo(-350,100),
+                        new LineTo(400,100),
+                        new LineTo(400,50),
+                        new LineTo(-350,50),
+
+                        new LineTo(-350,0),
+                        new LineTo(400,0),
+                        new LineTo(400,-50),
+                        new LineTo(-350,-50),
+
+                        new LineTo(-350,-100),
+                        new LineTo(400,-100),
+                        new LineTo(400,-150),
+                        new LineTo(-350,-150),
+
+                        new LineTo(-350,-200),
+                        new LineTo(400,-200),
+
                         new ClosePath()
                 };
 
         Path road = new Path();
-        road.setStroke(Color.WHITE);
+        road.setStroke(Color.BLACK);
         road.setStrokeWidth(75);
         road.getElements().addAll(path);
 
@@ -59,14 +93,11 @@ public class SimulatedDroneFlight implements SimulatedDrone {
         anim.setPath(road);
         anim.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
         anim.setInterpolator(Interpolator.LINEAR);
-        anim.setDuration(new Duration(6000));
-        anim.setCycleCount(Timeline.INDEFINITE);
+        anim.setDuration(new Duration(speed));
+        anim.setCycleCount(1);
 
-        Group root = new Group();
-        root.getChildren().addAll(road, car);
-        root.setTranslateX(50);
-        root.setTranslateY(50);
         stack.getChildren().addAll(car);
+        anim.setOnFinished(event -> deleteDrone(car));
         anim.play();
 //        root.setOnMouseClicked(me ->
 //        {
@@ -303,5 +334,10 @@ public class SimulatedDroneFlight implements SimulatedDrone {
     public String getSerialNumber() {
         // Not necessary to implement
         return null;
+    }
+
+    @Override
+    public void deleteDrone(ImageView drone) {
+        stack.getChildren().remove(drone);
     }
 }
