@@ -3,6 +3,27 @@ package farm.dashboard;
 import javafx.scene.image.ImageView;
 
 public class Adapter implements SimulatedDrone, PhysicalDrone{
+
+    private SimulatedDroneFlight simdrone;
+
+    private PhysicalDroneTello physdrone;
+
+    boolean is_sim;
+
+    public Adapter(){
+
+    }
+
+    public Adapter(PhysicalDroneTello drone) {
+        this.physdrone = drone;
+        this.is_sim = false;
+    }
+
+    public Adapter(SimulatedDroneFlight drone){
+        this.simdrone = drone;
+        this.is_sim = true;
+    }
+
     @Override
     public void beginProgram() {
 
@@ -15,11 +36,18 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
     @Override
     public void takeoff() {
-
+        if (is_sim) {
+            // do sim takeoff
+            simdrone.takeoff();
+        } else {
+            // do phys takeoff
+        }
     }
 
     @Override
     public void land() {
+        physdrone.land();
+        //no need to add simdrone land function... it is virtual
 
     }
 
@@ -48,39 +76,43 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
     }
 
+
+    //no need to add simdrone to directional functions
+
     @Override
     public void flyUpward(int up) {
-
+        physdrone.flyUpward(up);
     }
 
     @Override
     public void flyDown(int down) {
-
+        physdrone.flyDown(down);
     }
 
     @Override
     public void flyForward(int front) {
-
+        physdrone.flyForward(front);
     }
 
     @Override
     public void flyBackward(int back) {
-
+        physdrone.flyBackward(back);
     }
 
     @Override
     public void flyLeft(int left) {
-
+        physdrone.flyLeft(left);
     }
 
     @Override
     public void flyRight(int right) {
-
+        physdrone.flyRight(right);
     }
 
     @Override
     public void gotoXYZ(int x, int y, int z, int speed) {
-
+        physdrone.gotoXYZ(x, y, z, 4000);
+        simdrone.gotoXYZ(x, y, z, 4000);
     }
 
     @Override
@@ -110,7 +142,7 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
     @Override
     public void flip(String direction) {
-
+        physdrone.flip(direction);
     }
 
     @Override
@@ -120,42 +152,42 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
     @Override
     public void hoverInPlace(int seconds) throws InterruptedException {
-
+        physdrone.hoverInPlace(5);
     }
 
     @Override
     public void stopInPlace() {
-
+        physdrone.stopInPlace();
     }
 
     @Override
     public void setSpeed(int speed) {
-
+        physdrone.setSpeed(5000);
     }
 
     @Override
     public double getSpeed() {
-        return 0;
+        return physdrone.getSpeed();
     }
 
     @Override
     public int getBattery() {
-        return 0;
+        return physdrone.getBattery();
     }
 
     @Override
     public int getFlightTime() {
-        return 0;
+        return physdrone.getFlightTime();
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return physdrone.getHeight();
     }
 
     @Override
     public int getTemp() {
-        return 0;
+        return physdrone.getTemp();
     }
 
     @Override
@@ -175,42 +207,42 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
     @Override
     public double getBarometer() {
-        return 0;
+        return physdrone.getBarometer();
     }
 
     @Override
     public double getAccelerationX() {
-        return 0;
+        return physdrone.getAccelerationX();
     }
 
     @Override
     public double getAccelerationY() {
-        return 0;
+        return physdrone.getAccelerationY();
     }
 
     @Override
     public double getAccelerationZ() {
-        return 0;
+        return physdrone.getAccelerationZ();
     }
 
     @Override
     public int getTOF() {
-        return 0;
+        return physdrone.getTOF();
     }
 
     @Override
     public String getWIFI() {
-        return null;
+        return physdrone.getWIFI();
     }
 
     @Override
     public String getVersionSDK() {
-        return null;
+        return physdrone.getVersionSDK();
     }
 
     @Override
     public String getSerialNumber() {
-        return null;
+        return physdrone.getSerialNumber();
     }
 
     @Override

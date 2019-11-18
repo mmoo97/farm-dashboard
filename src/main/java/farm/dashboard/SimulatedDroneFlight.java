@@ -133,7 +133,7 @@ public class SimulatedDroneFlight implements SimulatedDrone {
                         new ClosePath()
                 };
 
-            setup(path, speed, false);
+            setup(path, speed, true);
 
     }
     @Override
