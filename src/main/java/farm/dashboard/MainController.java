@@ -59,6 +59,8 @@ public class MainController{
 
     private ContextMenu menu = new ContextMenu();
 
+    Adapter adapt;
+
     @FXML
     public void treeMouseHandler(MouseEvent event) throws ClassNotFoundException {
         MouseButton button = event.getButton();
@@ -202,11 +204,13 @@ public class MainController{
     private void animateDrone(){
 
         SimulatedDroneFlight scan = new SimulatedDroneFlight();
-        scan.scanFarm(5000); //speed in milliseconds
 
         SimulatedDroneFlight to_location = new SimulatedDroneFlight(0, 0);
 
-        to_location.flytoLocation(10000);
+        adapt = new Adapter(scan);
+        adapt.scanFarm(5000);
+        adapt = new Adapter(to_location);
+        adapt.flytoLocation(5000);
 
     }
 
