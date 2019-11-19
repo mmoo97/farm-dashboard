@@ -214,6 +214,16 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
     }
 
     @Override
+    public void scanFarm(int speed) {
+
+    }
+
+    @Override
+    public void flytoLocation(int speed) {
+
+    }
+
+    @Override
     public void deleteDrone(ImageView drone) {
 
     }

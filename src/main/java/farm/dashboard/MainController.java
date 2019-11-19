@@ -52,9 +52,6 @@ public class MainController{
     private AnchorPane textField;
 
     @FXML
-    private AnchorPane drawingItems;
-
-    @FXML
     private ItemContainer rootContainer = new ItemContainer("", 0, 0, 0, 0, 0, 0, "");
 
     @FXML
@@ -171,7 +168,8 @@ public class MainController{
     }
 
     public void drawFarm(){
-        drawingItems.getChildren().clear();
+        StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
+        stack.getChildren().clear();
         drawComponents(rootContainer);
     }
 
@@ -198,12 +196,6 @@ public class MainController{
 
         StackPane stack = (StackPane) app.getStage().getScene().lookup("#stack");
         stack.getChildren().addAll(vComponent, text);
-
-        drawingItems.setTopAnchor(stack, 800 - component.getLocationY());
-        drawingItems.setBottomAnchor(stack, component.getLocationY());
-        drawingItems.setRightAnchor(stack, 600 - component.getLocationX());
-        drawingItems.setLeftAnchor(stack, component.getLocationX());
-        drawingItems.getChildren().add(stack);
     }
 
     @FXML
