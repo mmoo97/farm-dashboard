@@ -61,6 +61,8 @@ public class MainController{
 
     Adapter adapt;
 
+    SimulatedDroneFlight to_item;
+
     @FXML
     public void treeMouseHandler(MouseEvent event) throws ClassNotFoundException {
         MouseButton button = event.getButton();
@@ -81,6 +83,9 @@ public class MainController{
             PricingVisitor vis = new PricingVisitor();
 
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
+
+            to_item = new SimulatedDroneFlight(selected.getValue());
+
             if( selected.getValue() instanceof ItemContainer ) {
                 selected.getValue().accept(vis);
                 text.setText("Purchase Price: " + vis.getValue());
@@ -205,11 +210,9 @@ public class MainController{
 
         SimulatedDroneFlight scan = new SimulatedDroneFlight();
 
-        SimulatedDroneFlight to_location = new SimulatedDroneFlight(0, 0);
-
         adapt = new Adapter(scan);
         adapt.scanFarm(5000);
-        adapt = new Adapter(to_location);
+        adapt = new Adapter(to_item);
         adapt.flytoLocation(5000);
 
     }
