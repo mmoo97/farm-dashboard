@@ -226,6 +226,17 @@ public class MainController{
 
     }
 
+    private void visitItem(){
+
+        PhysicalDroneTello drone = new PhysicalDroneTello();
+
+        adapt = new Adapter(drone);
+
+        adapt.beginProgram();
+        adapt.takeoff();
+        adapt.land();
+    }
+
     private String getImageURIPath(String imageName){
         return "file:src/main/resources/farm.dashboard/" + imageName;
     }
