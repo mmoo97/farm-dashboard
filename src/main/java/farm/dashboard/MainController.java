@@ -208,12 +208,21 @@ public class MainController{
     @FXML
     private void animateDrone(){
 
-        SimulatedDroneFlight scan = new SimulatedDroneFlight();
+        PhysicalDroneTello drone = new PhysicalDroneTello();
 
-        adapt = new Adapter(scan);
-        adapt.scanFarm(5000);
-        adapt = new Adapter(to_item);
-        adapt.flytoLocation(5000);
+        adapt = new Adapter(drone);
+
+        adapt.beginProgram();
+        adapt.takeoff();
+        adapt.land();
+        // SimulatedDroneFlight scan = new SimulatedDroneFlight();
+
+        // adapt = new Adapter(scan);
+        // adapt.beginProgram();
+        // adapt.takeoff();
+        // adapt.scanFarm(5000);
+        // adapt = new Adapter(to_item);
+        // adapt.flytoLocation(5000);
 
     }
 
