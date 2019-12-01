@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
@@ -36,13 +37,14 @@
                            <children>
                               <GridPane maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.6666717529297" minWidth="10.0" prefWidth="108.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.6666717529297" minWidth="10.0" prefWidth="130.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="94.66668701171875" minHeight="10.0" prefHeight="21.3333740234375" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="108.6666259765625" minHeight="10.0" prefHeight="108.6666259765625" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#addItem" text="Add Item" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -59,7 +61,10 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#animateDrone" text="Fly Drone" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" onAction="#animateDrone" text="Visit Item" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" onAction="#animateDrone" text="Scan Farm" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                    <CheckBox id="phys" mnemonicParsing="false" onAction="#physSelected" prefHeight="15.0" prefWidth="115.0" text="Physical " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                    <CheckBox id="sim" mnemonicParsing="false" onAction="#simSelected" prefHeight="15.0" prefWidth="115.0" selected="true" text="Simulation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                  </children>
                               </GridPane>
                            </children></VBox>

@@ -214,6 +214,36 @@ public class MainController{
 
     }
 
+
+
+    @FXML
+    private void physSelected() {
+        boolean sim = ((CheckBox) app.getStage().getScene().lookup("#sim")).isSelected();
+        boolean phys = ((CheckBox) app.getStage().getScene().lookup("#phys")).isSelected();
+
+        if (sim) {
+            ((CheckBox) app.getStage().getScene().lookup("#sim")).setSelected(false);
+            ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(true);
+        }else {
+            ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(true);
+        }
+    }
+
+
+    @FXML
+    private void simSelected() {
+
+        boolean sim = ((CheckBox) app.getStage().getScene().lookup("#sim")).isSelected();
+        boolean phys = ((CheckBox) app.getStage().getScene().lookup("#phys")).isSelected();
+
+        if (phys) {
+            ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(false);
+            ((CheckBox) app.getStage().getScene().lookup("#sim")).setSelected(true);
+        }else {
+            ((CheckBox) app.getStage().getScene().lookup("#sim")).setSelected(true);
+        }
+    }
+
     private String getImageURIPath(String imageName){
         return "file:src/main/resources/farm.dashboard/" + imageName;
     }
