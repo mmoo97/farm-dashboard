@@ -428,7 +428,7 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
             phys_drone.getBattery();
 
             //Forward one rep
-            phys_drone.flyUpward(120);
+            phys_drone.flyUpward(80);
             phys_drone.flyForward(480);
             phys_drone.turnCCW(90);
             phys_drone.flyForward(90);

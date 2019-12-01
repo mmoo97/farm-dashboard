@@ -214,6 +214,7 @@ public class MainController{
 
         adapt.beginProgram();
         adapt.takeoff();
+        adapt.scanFarm(1000);
         adapt.land();
         // SimulatedDroneFlight scan = new SimulatedDroneFlight();
 
@@ -226,6 +227,7 @@ public class MainController{
 
     }
 
+    @FXML
     private void visitItem(){
 
         PhysicalDroneTello drone = new PhysicalDroneTello();
