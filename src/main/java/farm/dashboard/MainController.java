@@ -203,21 +203,29 @@ public class MainController{
     @FXML
     private void animateDrone(){
 
-        SimulatedDroneFlight scan = new SimulatedDroneFlight();
+        if (physSelected()) {
+            PhysicalDroneTello scan = new PhysicalDroneTello();
 
-        SimulatedDroneFlight to_location = new SimulatedDroneFlight(0, 0);
+            PhysicalDroneTello to_location = new PhysicalDroneTello();
+        } else {
+            SimulatedDroneFlight scan = new SimulatedDroneFlight();
+
+            SimulatedDroneFlight to_location = new SimulatedDroneFlight(0, 0);
+        }
 
         adapt = new Adapter(scan);
         adapt.scanFarm(5000);
         adapt = new Adapter(to_location);
         adapt.flytoLocation(5000);
 
+
+
     }
 
 
 
     @FXML
-    private void physSelected() {
+    private boolean physSelected() {
         boolean sim = ((CheckBox) app.getStage().getScene().lookup("#sim")).isSelected();
         boolean phys = ((CheckBox) app.getStage().getScene().lookup("#phys")).isSelected();
 
@@ -227,6 +235,7 @@ public class MainController{
         }else {
             ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(true);
         }
+        return phys;
     }
 
 
