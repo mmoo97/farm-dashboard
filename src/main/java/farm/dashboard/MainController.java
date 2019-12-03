@@ -64,11 +64,14 @@ public class MainController{
     SimulatedDroneFlight to_item;
     boolean sim_selected = true;
 
+    FarmComponent last_selected;
+
     @FXML
     public void treeMouseHandler(MouseEvent event) throws ClassNotFoundException {
         MouseButton button = event.getButton();
         if(button==MouseButton.SECONDARY){
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
+            last_selected = selected.getValue();
             if (selected!=null) {
                 openContextMenu(selected, event.getScreenX(), event.getScreenY());
             } else {
@@ -209,8 +212,6 @@ public class MainController{
     @FXML
     private void animateDrone() {
 
-
-
         if (!sim_selected) {
             PhysicalDroneTello scan = new PhysicalDroneTello();
 
@@ -235,6 +236,26 @@ public class MainController{
             SimulatedDroneFlight scan = new SimulatedDroneFlight();
             Adapter adapter = new Adapter(scan);
             adapter.scanFarm(5000);
+        }
+    }
+
+    @FXML
+    private void visitItem(){
+
+
+        try {
+            if (!sim_selected) {
+                PhysicalDroneTello scan = new PhysicalDroneTello();
+                scan.gotoXYZ(((int)last_selected.location_x), ((int)last_selected.location_y),
+                        0, 55);
+
+            } else {
+                SimulatedDroneFlight scan = new SimulatedDroneFlight(last_selected);
+                Adapter adapter = new Adapter(scan);
+                adapter.flytoLocation(5000);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("No previous selection");
         }
     }
 
