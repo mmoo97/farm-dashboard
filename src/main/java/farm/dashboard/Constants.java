@@ -9,8 +9,8 @@ package farm.dashboard;
 
 public class Constants {
 		
-	public static final String FILE_PATH_DEVELOPER = "/Users/CRW/Desktop/CS420/farm-dashboard-part2/Tello3ToJava.py";
-	public static final String PYTHON_PATH = "/usr/bin/python"; // your path to python executable (please use the explicit path)
+	public static final String FILE_PATH_DEVELOPER = "";
+	public static final String PYTHON_PATH = ""; // your path to python executable (please use the explicit path)
 	
 	public static final int FARMWIDTH = 800; // farm width on screen in pixels 4:3 ratio
 	public static final int FARMHEIGHT = 600; // farm height on screen in pixels 4:3 ratio
