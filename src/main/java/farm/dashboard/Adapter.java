@@ -458,7 +458,7 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
             //return to base
             phys_drone.turnCW(135);
-            phys_drone.flyForward(499);
+            phys_drone.flyForward(399);
             phys_drone.flyForward(101);
 
         }
