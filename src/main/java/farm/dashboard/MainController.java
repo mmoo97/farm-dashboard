@@ -62,6 +62,7 @@ public class MainController{
     Adapter adapt;
 
     SimulatedDroneFlight to_item;
+    boolean sim_selected = true;
 
     @FXML
     public void treeMouseHandler(MouseEvent event) throws ClassNotFoundException {
@@ -208,32 +209,49 @@ public class MainController{
     @FXML
     private void animateDrone() {
 
-        if (physSelected()) {
+
+
+        if (!sim_selected) {
             PhysicalDroneTello scan = new PhysicalDroneTello();
 
             PhysicalDroneTello to_location = new PhysicalDroneTello();
+
         } else {
             SimulatedDroneFlight scan = new SimulatedDroneFlight();
 
             SimulatedDroneFlight to_location = new SimulatedDroneFlight(0, 0);
         }
+    }
 
+    @FXML
+    private void scanFarm() {
+
+        if (!sim_selected) {
+            PhysicalDroneTello scan = new PhysicalDroneTello();
+            Adapter adapter = new Adapter(scan);
+            adapter.scanFarm(5000);
+
+        } else {
+            SimulatedDroneFlight scan = new SimulatedDroneFlight();
+            Adapter adapter = new Adapter(scan);
+            adapter.scanFarm(5000);
+        }
     }
 
 
 
     @FXML
-    private boolean physSelected() {
+    private void physSelected() {
         boolean sim = ((CheckBox) app.getStage().getScene().lookup("#sim")).isSelected();
         boolean phys = ((CheckBox) app.getStage().getScene().lookup("#phys")).isSelected();
 
         if (sim) {
             ((CheckBox) app.getStage().getScene().lookup("#sim")).setSelected(false);
             ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(true);
+            sim_selected = false;
         }else {
             ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(true);
         }
-        return phys;
     }
 
 
@@ -246,9 +264,11 @@ public class MainController{
         if (phys) {
             ((CheckBox) app.getStage().getScene().lookup("#phys")).setSelected(false);
             ((CheckBox) app.getStage().getScene().lookup("#sim")).setSelected(true);
+            sim_selected = true;
         }else {
             ((CheckBox) app.getStage().getScene().lookup("#sim")).setSelected(true);
         }
+
     }
 
     private String getImageURIPath(String imageName){

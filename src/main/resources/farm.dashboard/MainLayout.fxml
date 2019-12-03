@@ -64,7 +64,7 @@
                                        </cursor>
                                     </Button>
                                     <Button mnemonicParsing="false" onAction="#animateDrone" text="Visit Item" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                                    <Button mnemonicParsing="false" onAction="#animateDrone" text="Scan Farm" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                    <Button mnemonicParsing="false" onAction="#scanFarm" text="Scan Farm" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                                     <CheckBox id="phys" mnemonicParsing="false" onAction="#physSelected" prefHeight="15.0" prefWidth="115.0" text="Physical " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                     <CheckBox id="sim" mnemonicParsing="false" onAction="#simSelected" prefHeight="15.0" prefWidth="115.0" selected="true" text="Simulation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                  </children>
