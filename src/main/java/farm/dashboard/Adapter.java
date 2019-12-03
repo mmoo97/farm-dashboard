@@ -422,6 +422,9 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
     @Override
     public void scanFarm(int speed) {
+        int length = 390; // orig 480
+        int width = 70; // orig 90
+
         if(is_sym) {
             sim_drone.scanFarm(speed);
         }else {
@@ -429,29 +432,29 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
 
             //Forward one rep
             phys_drone.flyUpward(40);
-            phys_drone.flyForward(480);
-            phys_drone.turnCCW(90);
-            phys_drone.flyForward(90);
-            phys_drone.turnCCW(90);
-            phys_drone.flyForward(480);
+            phys_drone.flyForward(length);
+            phys_drone.turnCCW(width);
+            phys_drone.flyForward(width);
+            phys_drone.turnCCW(width);
+            phys_drone.flyForward(length);
 
             //Backward one rep
-            phys_drone.turnCW(90);
-            phys_drone.flyForward(90);
-            phys_drone.turnCW(90);
-            phys_drone.flyForward(480);
+            phys_drone.turnCW(width);
+            phys_drone.flyForward(width);
+            phys_drone.turnCW(width);
+            phys_drone.flyForward(length);
 
             //Forward one rep
-            phys_drone.turnCCW(90);
-            phys_drone.flyForward(90);
-            phys_drone.turnCCW(90);
-            phys_drone.flyForward(480);
+            phys_drone.turnCCW(width);
+            phys_drone.flyForward(width);
+            phys_drone.turnCCW(width);
+            phys_drone.flyForward(length);
 
             //Backward one rep
-            phys_drone.turnCW(90);
-            phys_drone.flyForward(90);
-            phys_drone.turnCW(90);
-            phys_drone.flyForward(480);
+            phys_drone.turnCW(width);
+            phys_drone.flyForward(width);
+            phys_drone.turnCW(width);
+            phys_drone.flyForward(length);
 
             //return to base
             phys_drone.turnCW(135);
