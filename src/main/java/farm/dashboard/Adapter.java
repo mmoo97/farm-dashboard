@@ -431,35 +431,35 @@ public class Adapter implements SimulatedDrone, PhysicalDrone{
             phys_drone.getBattery();
 
             //Forward one rep
-            phys_drone.flyUpward(40);
+            phys_drone.flyUpward(50);
             phys_drone.flyForward(length);
-            phys_drone.turnCCW(width);
+            phys_drone.turnCCW(90);
             phys_drone.flyForward(width);
-            phys_drone.turnCCW(width);
+            phys_drone.turnCCW(90);
             phys_drone.flyForward(length);
 
             //Backward one rep
-            phys_drone.turnCW(width);
+            phys_drone.turnCW(90);
             phys_drone.flyForward(width);
-            phys_drone.turnCW(width);
+            phys_drone.turnCW(90);
             phys_drone.flyForward(length);
 
             //Forward one rep
-            phys_drone.turnCCW(width);
+            phys_drone.turnCCW(90);
             phys_drone.flyForward(width);
-            phys_drone.turnCCW(width);
+            phys_drone.turnCCW(90);
             phys_drone.flyForward(length);
 
             //Backward one rep
-            phys_drone.turnCW(width);
+            phys_drone.turnCW(90);
             phys_drone.flyForward(width);
-            phys_drone.turnCW(width);
+            phys_drone.turnCW(90);
             phys_drone.flyForward(length);
 
             //return to base
             phys_drone.turnCW(135);
             phys_drone.flyForward(399);
-            phys_drone.flyForward(101);
+            //phys_drone.flyForward(101);
 
         }
     }

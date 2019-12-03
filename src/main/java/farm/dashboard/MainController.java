@@ -74,7 +74,6 @@ public class MainController{
         MouseButton button = event.getButton();
         if(button==MouseButton.SECONDARY){
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
-            last_selected = selected.getValue();
             if (selected!=null) {
                 openContextMenu(selected, event.getScreenX(), event.getScreenY());
             } else {
@@ -90,6 +89,7 @@ public class MainController{
             PricingVisitor vis = new PricingVisitor();
 
             TreeItem<FarmComponent> selected = componentTree.getSelectionModel().getSelectedItem();
+            last_selected = selected.getValue();
 
             to_item = new SimulatedDroneFlight(selected.getValue());
 
@@ -247,7 +247,10 @@ public class MainController{
         if (!sim_selected) {
             PhysicalDroneTello scan = new PhysicalDroneTello();
             Adapter adapter = new Adapter(scan);
+            adapter.beginProgram();
+            adapter.takeoff();
             adapter.scanFarm(5000);
+            adapter.land();
 
         } else {
             SimulatedDroneFlight scan = new SimulatedDroneFlight();
@@ -263,13 +266,18 @@ public class MainController{
         try {
             if (!sim_selected) {
                 PhysicalDroneTello scan = new PhysicalDroneTello();
+                scan.beginProgram();
+                scan.takeoff();
                 scan.gotoXYZ(((int)last_selected.location_x), ((int)last_selected.location_y),
                         0, 55);
+                scan.turnCCW(180);
+                scan.flyForward(50);
+                scan.land();
 
             } else {
                 SimulatedDroneFlight scan = new SimulatedDroneFlight(last_selected);
                 Adapter adapter = new Adapter(scan);
-                adapter.flytoLocation(5000);
+                adapter.flytoLocation(3000);
             }
         } catch (NullPointerException e) {
             System.out.println("No previous selection");
