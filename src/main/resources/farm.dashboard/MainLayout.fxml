@@ -35,7 +35,7 @@
                         </ScrollPane>
                         <VBox fx:id="thing" layoutX="119.0" layoutY="480.0" prefHeight="331.0" prefWidth="337.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <GridPane maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                              <GridPane maxHeight="1.7976931348623157E308" prefWidth="238.0" VBox.vgrow="ALWAYS">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.6666717529297" minWidth="10.0" prefWidth="108.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.6666717529297" minWidth="10.0" prefWidth="130.0" />
@@ -50,12 +50,14 @@
                                     <Button mnemonicParsing="false" onAction="#addItem" text="Add Item" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></Button>
+                                       </cursor>
+                                    </Button>
                                     <Button mnemonicParsing="false" onAction="#addItemContainer" text="Add Item Container" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
 
-                                       <cursor>
+                                             <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></Button>
+                                       </cursor>
+                                    </Button>
                                     <Button fx:id="paintFarm" mnemonicParsing="false" onAction="#refreshComponents" text="Refresh UI" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
