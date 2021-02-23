@@ -1,6 +1,12 @@
 # Farm Dashboard
 This is the repo for Term project–Design and Implementation-Part 1.
 
+## Screenshots
+![1](screenshots/1)
+![2](screenshots/2)
+![3](screenshots/3)
+![4](screenshots/4)
+
 ## How to run the code:
 Running the code should be straight forward.
 
